@@ -4,7 +4,7 @@ var Tracks = {
     name: me + " - Luminescence",
     title: "Luminescence",
     author: me,
-    img: "https://i.imgur.com/VjFhnjx.jpg",
+    img: "/img/cover_art/luminescence.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/luminescence",
@@ -37,7 +37,7 @@ var Tracks = {
     name: "3MBER & SRK - Night Owls (" + me + "'s Remix)",
     title: "Night Owls (" + me + "\'s Remix)",
     author: "3MBER \& SRK",
-    img: "https://i.imgur.com/66DWb0p.jpg",
+    img: "/img/cover_art/nightOwls.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/3mber-srk-night-owls-remix",
@@ -69,7 +69,7 @@ var Tracks = {
     name: me + " - Promenade",
     title: "Promenade",
     author: me,
-    img: "https://i.imgur.com/EOKKX6Z.jpg",
+    img: "/img/cover_art/promenade.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/promenade",
@@ -101,7 +101,7 @@ var Tracks = {
     name: "Lockyn - Aqua (" + me + "\'s Remix)",
     title: "Aqua (" + me + "\'s Remix)",
     author: "Lockyn",
-    img: "https://i.imgur.com/FNkzp0S.jpg",
+    img: "/img/cover_art/lockynAqua.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/lockyn-aqua-remix",
@@ -132,7 +132,7 @@ var Tracks = {
     name: me + " - Sunshine",
     title: "Sunshine",
     author: me,
-    img: "https://i.imgur.com/YtgvHhF.jpg",
+    img: "/img/cover_art/sunshine.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/sunshine",
@@ -163,7 +163,7 @@ var Tracks = {
     name: me + " - Sea Lights",
     title: "Sea Lights",
     author: me,
-    img: "https://i.imgur.com/yzV6gD5.jpg",
+    img: "/img/cover_art/seaLights.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/sea-lights",
@@ -194,7 +194,7 @@ var Tracks = {
     name: me + " - Home",
     title: "Home",
     author: me,
-    img: "https://i.imgur.com/7KvqLCa.jpg",
+    img: "/img/cover_art/home.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/hamty-home",
@@ -219,7 +219,7 @@ var Tracks = {
     name: me + " - Inspiration",
     title: "Inspiration",
     author: me,
-    img: "https://i.imgur.com/0eU7A0y.jpg",
+    img: "/img/cover_art/inspiration.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/hamty-inspiration",
@@ -244,7 +244,7 @@ var Tracks = {
     name: me + " - River Journey",
     title: "River Journey",
     author: me,
-    img: "https://i.imgur.com/SdQKV5Y.jpg",
+    img: "/img/cover_art/riverJourney.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/hamty-home",
@@ -264,7 +264,7 @@ var Tracks = {
     name: me + " - The Return",
     title: "The Return",
     author: me,
-    img: "https://i.imgur.com/yMuBKFT.jpg",
+    img: "/img/cover_art/return.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/the-return",
@@ -284,7 +284,7 @@ var Tracks = {
     name: me + " - Time Rift",
     title: "Time Rift",
     author: me,
-    img: "https://i.imgur.com/MXMrcYl.jpg",
+    img: "/img/cover_art/timeRift.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/time-rift",
@@ -304,7 +304,7 @@ var Tracks = {
     name: me + " - The Adventure",
     title: "The Adventure",
     author: me,
-    img: "https://i.imgur.com/HzsEy9F.jpg",
+    img: "/img/cover_art/adventure.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/the-adventure",
@@ -324,7 +324,7 @@ var Tracks = {
     name: me + " - Waterfall",
     title: "Waterfall",
     author: me,
-    img: "https://i.imgur.com/XDUzgw6.jpg",
+    img: "/img/cover_art/waterfall.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/waterfall",
@@ -344,7 +344,7 @@ var Tracks = {
     name: me + " - The Dream",
     title: "The Dream",
     author: me,
-    img: "https://i.imgur.com/8JFCdU0.jpg",
+    img: "/img/cover_art/dream.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/the-dream",
@@ -364,7 +364,7 @@ var Tracks = {
     name: me + " - Night",
     title: "Night",
     author: me,
-    img: "https://i.imgur.com/qZtcOwO.jpg",
+    img: "/img/cover_art/night.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/night",
@@ -384,7 +384,7 @@ var Tracks = {
     name: me + " - Morning at Mountains",
     title: "Morning at Mountains",
     author: me,
-    img: "https://i.imgur.com/GRXKIcW.jpg",
+    img: "/img/cover_art/morningAtMountains.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/morning-at-mountains",
@@ -404,7 +404,7 @@ var Tracks = {
     name: me + " - The Sky Is Yours",
     title: "The Sky Is Yours",
     author: me,
-    img: "https://i.imgur.com/sDlSDMJ.jpg",
+    img: "/img/cover_art/skyIsYours.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/the-sky-is-yours",
@@ -424,7 +424,7 @@ var Tracks = {
     name: me + " - A Day Before Tommorow",
     title: "A Day Before Tommorow",
     author: me,
-    img: "https://i.imgur.com/dGxI92Q.jpg",
+    img: "/img/cover_art/dayBeforeTommorow.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/a-day-before-tommorow",
@@ -444,7 +444,7 @@ var Tracks = {
     name: me + " - Lonely Island",
     title: "Lonely Island",
     author: me,
-    img: "https://i.imgur.com/571H9cx.jpg",
+    img: "/img/cover_art/lonelyIsland.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/lonely-island",
@@ -464,7 +464,7 @@ var Tracks = {
     name: me + " - Cupcake",
     title: "Cupcake",
     author: me,
-    img: "https://i.imgur.com/5mNRgLp.jpg",
+    img: "/img/cover_art/cupcake.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/cupcake",
@@ -484,7 +484,7 @@ var Tracks = {
     name: me + " - Up in the Sky",
     title: "Up in the Sky",
     author: me,
-    img: "https://i.imgur.com/oG4lwCE.jpg",
+    img: "/img/cover_art/upInTheSky.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/up-in-the-sky",
@@ -504,7 +504,7 @@ var Tracks = {
     name: me + " - Snowglobe",
     title: "Snowglobe",
     author: me,
-    img: "https://i.imgur.com/jrzrYgL.jpg",
+    img: "/img/cover_art/snowglobe.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/snowglobe",
@@ -524,7 +524,7 @@ var Tracks = {
     name: me + " - Winter Time",
     title: "Winter Time",
     author: me,
-    img: "https://i.imgur.com/RXbjYM9.jpg",
+    img: "/img/cover_art/winterTime.jpg",
     links: {
       soundcloud: {
 	    href: "https://soundcloud.com/hamty/winter-time",
@@ -544,7 +544,7 @@ var Tracks = {
     name: me + " - Sleeping City",
     title: "Sleeping City",
     author: me,
-    img: "https://i.imgur.com/TxmXLHn.jpg",
+    img: "/img/cover_art/sleepingCity.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/sleeping-city",
@@ -564,7 +564,7 @@ var Tracks = {
     name: me + " - The Cube Game",
     title: "The Cube Game",
     author: me,
-    img: "https://i.imgur.com/skzGfmK.jpg",
+    img: "/img/cover_art/cubeGame.jpg",
     links: {
       soundcloud: {
         href: "https://soundcloud.com/hamty/the-cube-game",
