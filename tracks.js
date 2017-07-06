@@ -1,5 +1,5 @@
 var me = "Hamty";
-var Songs = {
+var Tracks = {
   luminescence: {
     name: me + " - Luminescence",
     title: "Luminescence",
@@ -581,10 +581,10 @@ var Songs = {
     date: new Date(2013, 11, 8)
   }
 }
-for (var i in Songs) {
-  if(Songs[i].links.youtube) {
-    if(Songs[i].links.youtube.id) {
-      Songs[i].links.youtube.href = "https://youtu.be/" + Songs[i].links.youtube.id;
+for (var i in Tracks) {
+  if(Tracks[i].links.youtube) {
+    if(Tracks[i].links.youtube.id) {
+      Tracks[i].links.youtube.href = "https://youtu.be/" + Tracks[i].links.youtube.id;
     }
   }
 }

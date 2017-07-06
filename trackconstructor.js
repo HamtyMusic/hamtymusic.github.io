@@ -4,21 +4,21 @@ var detailProperties = [ "genre", "duration", "tempo", "type" ],
 function Search(str) {
   str = str || "";
   if (str.length == 0) {
-    return Songs;
+    return Tracks;
   }
   var srchTgs = str.split(" ");
   for (var i = 0; i < srchTgs.length; i++) {
     srchTgs[i] = srchTgs[i].toLowerCase();
   }
   var mObj = {};
-  for (i in Songs) {
-    if (!Songs.hasOwnProperty(i)) { continue; }
+  for (i in Tracks) {
+    if (!Tracks.hasOwnProperty(i)) { continue; }
     mObj[i] = true;
   }
   for (var i = 0; i < srchTgs.length; i++) {
     for (var y in mObj) {
-      if (Songs[y].name && mObj.hasOwnProperty(y)) {
-        if (((Songs[y].name).toLowerCase()).search(srchTgs[i]) == -1) {
+      if (Tracks[y].name && mObj.hasOwnProperty(y)) {
+        if (((Tracks[y].name).toLowerCase()).search(srchTgs[i]) == -1) {
           delete mObj[y];
         }
       }
@@ -27,62 +27,62 @@ function Search(str) {
   var results = {};
   for (i in mObj) {
     if (!mObj.hasOwnProperty(i)) { continue; }
-    results[i] = (Songs[i]);
+    results[i] = (Tracks[i]);
   }
   return results;
 }
 
-function drawSongs(Songs, defSongs) {
-  if (!Songs || Songs.length == 0) {
+function drawTracks(Tracks, defTracks) {
+  if (!Tracks || Tracks.length == 0) {
     return false;
   }
-  defSongs = defSongs || window.Songs || Songs;
-  var songParent = $("#SongList")[0];
-  /* hideSongs(Songs); */
+  defTracks = defTracks || window.Tracks || Tracks;
+  var trackParent = $("#TrackList")[0];
+  /* hideTracks(Tracks); */
   var showAfter = 0;
-  for (var i in defSongs) {
-    if (!defSongs.hasOwnProperty(i)) { continue; }
+  for (var i in defTracks) {
+    if (!defTracks.hasOwnProperty(i)) { continue; }
     (function () {
-      var Song = defSongs[i];
-      var should = Songs.hasOwnProperty(i);
-      if(!Song.elem) {
-        var wrap = newElem("div", songParent, "song-wrap" + ((document.documentElement.classList && document.documentElement.classList.toggle) ? " hide invisible" : ""));
-        var elem = newElem("div", wrap, "song pb shadow-2 dynamic");
-        Song.elem = wrap;
-        Song.shown = false;
-        if (Song.img) {
-          var imgPar = newElem("a", elem, { class: "song-image-wrap lighten", href: "#" + i });
-          var img = newElem("img", imgPar, { class: "song-image shadow dynamic", src: Song.img.replace(/^http:\/\//i, 'https://') });
+      var Track = defTracks[i];
+      var should = Tracks.hasOwnProperty(i);
+      if(!Track.elem) {
+        var wrap = newElem("div", trackParent, "track-wrap" + ((document.documentElement.classList && document.documentElement.classList.toggle) ? " hide invisible" : ""));
+        var elem = newElem("div", wrap, "track pb shadow-2 dynamic");
+        Track.elem = wrap;
+        Track.shown = false;
+        if (Track.img) {
+          var imgPar = newElem("a", elem, { class: "track-image-wrap lighten", href: "#" + i });
+          var img = newElem("img", imgPar, { class: "track-image shadow dynamic", src: Track.img.replace(/^http:\/\//i, 'https://') });
         }
-        var title = newElem("div", elem, { class: "song-title", innerHTML: Song.title, title: Song.name });
+        var title = newElem("div", elem, { class: "track-title", innerHTML: Track.title, title: Track.name });
         addEvent(title, "dblclick", function() {
           selectText(title);
         });
-        var author = newElem("div", elem, { class: "song-author", innerHTML: Song.author, title: Song.name });
+        var author = newElem("div", elem, { class: "track-author", innerHTML: Track.author, title: Track.name });
 
         var links = newElem("div", newElem("div", elem, "link-buttons-wrap"), "link-buttons");
         var numberOfLinks = 0;
-        if(Song.download) {
+        if(Track.download) {
           var a = newElem("a", links, { class: "link download-link", title: "Click for download options" }),
             dlbtn = newElem("svg", a, "link-button");
           setVectorSource(dlbtn, "download");
           addEvent(a, "click", function() {
-            downloadSong(Song);
+            downloadTrack(Track);
           });
           numberOfLinks++;
         }
         linksToDisplay.forEach(function(key) {
-          if(Song.links.hasOwnProperty(key[0]) && Song.links[key[0]]) {
-            var a = newElem("a", links, { class: "link", href: processLink(Song.links[key[0]]), target: "_blank", title: ("\"" + Song.name + "\" on " + key[1]) });
+          if(Track.links.hasOwnProperty(key[0]) && Track.links[key[0]]) {
+            var a = newElem("a", links, { class: "link", href: processLink(Track.links[key[0]]), target: "_blank", title: ("\"" + Track.name + "\" on " + key[1]) });
             var dlbtn = newElem("svg", a, "link-button");
             setVectorSource(dlbtn, key[0]);
             numberOfLinks++;
           }
         });
         //Release Date
-        if (Song.date) {
-          if (Object.prototype.toString.call(Song.date) === "[object Date]") {
-            var date = Song.date;
+        if (Track.date) {
+          if (Object.prototype.toString.call(Track.date) === "[object Date]") {
+            var date = Track.date;
             var dates = newElem("div", elem, "DateContainer");
             var date1 = newElem("div", dates, {
               class: "dateText dateAbsolute",
@@ -101,60 +101,60 @@ function drawSongs(Songs, defSongs) {
           }
         }
       }
-      if(Song.shown != should && Song.elem.classList && Song.elem.classList.toggle) {
+      if(Track.shown != should && Track.elem.classList && Track.elem.classList.toggle) {
         if(should) {          
-          Song.elem.classList.remove("hide");
-          Song.shown = true;
+          Track.elem.classList.remove("hide");
+          Track.shown = true;
           if(showAfter < 5) {
-            Song.elem.classList.remove("invisible")
+            Track.elem.classList.remove("invisible")
           } else {
             setTimeout(function() {
-              if(Song.shown) { Song.elem.classList.remove("invisible") }
+              if(Track.shown) { Track.elem.classList.remove("invisible") }
             }, showAfter);
           }
           showAfter += 60;
         } else {
-          Song.elem.classList.add("invisible");
-          Song.elem.classList.add("hide");
-          Song.shown = false;
+          Track.elem.classList.add("invisible");
+          Track.elem.classList.add("hide");
+          Track.shown = false;
         }
       }
     }());
   }
   return true;
 }
-function drawSong(Song) {
-  if (Song) {} else {
+function drawTrack(Track) {
+  if (Track) {} else {
     return false;
   }
-  var img = $("#SongImage")[0];
-  if (Song.img) {
-    img.src = processLink(Song.img, true);
+  var img = $("#TrackImage")[0];
+  if (Track.img) {
+    img.src = processLink(Track.img, true);
   } else {
     img.src = "";
   }
-  var title = $("#SongTitle")[0];
-  title.innerHTML = Song.name || "No name";
-  title.setAttribute("title", Song.title + " by " + Song.author);
+  var title = $("#TrackTitle")[0];
+  title.innerHTML = Track.name || "No name";
+  title.setAttribute("title", Track.title + " by " + Track.author);
   addEvent(title, "dblclick", function() {
     selectText(title);
   });
   
-  var links = $("#SongLinks")[0];
+  var links = $("#TrackLinks")[0];
   links.innerHTML = "";
-  var dlLinks = $("#SongDlLinks")[0];
+  var dlLinks = $("#TrackDlLinks")[0];
   dlLinks.innerHTML = "";
-  if(Song.download && Song.download.length != 0) {
-    for (var key in Song.download) {
-      if (!Song.download.hasOwnProperty(key)) { continue; }
-      var a = newElem("a", dlLinks, { class: "btn shadow dynamic wave", href: processLink(Song.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Song.name + ")") });
+  if(Track.download && Track.download.length != 0) {
+    for (var key in Track.download) {
+      if (!Track.download.hasOwnProperty(key)) { continue; }
+      var a = newElem("a", dlLinks, { class: "btn shadow dynamic wave", href: processLink(Track.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Track.name + ")") });
     }
   } else {
     dlLinks.innerHTML = "Nothing here...";
   }
   linksToDisplay.forEach(function(key) {
-    if(Song.links.hasOwnProperty(key[0]) && Song.links[key[0]]) {
-      var a = newElem("a", links, { class: "link", href: processLink(Song.links[key[0]]), target: "_blank", title: ("\"" + Song.name + "\" on " + key[1]) });
+    if(Track.links.hasOwnProperty(key[0]) && Track.links[key[0]]) {
+      var a = newElem("a", links, { class: "link", href: processLink(Track.links[key[0]]), target: "_blank", title: ("\"" + Track.name + "\" on " + key[1]) });
       var dlbtn = newElem("svg", a, "link-button");
       setVectorSource(dlbtn, key[0]);
     }
@@ -163,9 +163,9 @@ function drawSong(Song) {
   //Release Date
   $("#dateAbsolute")[0].innerHTML = "";
   $("#dateRelative")[0].innerHTML = "";
-  if (Song.date) {
-    if (Object.prototype.toString.call(Song.date) === "[object Date]") {
-      var date = Song.date;
+  if (Track.date) {
+    if (Object.prototype.toString.call(Track.date) === "[object Date]") {
+      var date = Track.date;
       var date1 = $("#dateAbsolute")[0];
       date1.innerHTML = date.toLocaleDateString([], {
         day: "numeric",
@@ -183,13 +183,13 @@ function drawSong(Song) {
     }
   }
   
-  var table = $("#SongDetailsTable")[0];
+  var table = $("#TrackDetailsTable")[0];
   table.innerHTML = "";
-  if(Song.details) {
+  if(Track.details) {
     detailProperties.forEach(function(i) {
-      if(Song.details.hasOwnProperty(i)) {
+      if(Track.details.hasOwnProperty(i)) {
         var name = i.capFirstLetter();
-        var value = Song.details[i];
+        var value = Track.details[i];
         if(i == "type") {
           value = ["Original", "Remix"][value];
         } else if(i == "duration") {
@@ -198,33 +198,33 @@ function drawSong(Song) {
           sec = (sec < 10) ? "0" + sec : sec;
           value = min + ":" + sec;
         }
-        var row = newElem("div", table, "song-details-table-row");
-        newElem("div", row, { class: "song-details-table-cell name", innerHTML: name });
-        newElem("div", row, { class: "song-details-table-cell value", innerHTML: value });
+        var row = newElem("div", table, "track-details-table-row");
+        newElem("div", row, { class: "track-details-table-cell name", innerHTML: name });
+        newElem("div", row, { class: "track-details-table-cell value", innerHTML: value });
       }
     });
-    var price = Song.details.price;
+    var price = Track.details.price;
   }
-  $("#SongPrice")[0].innerHTML = price || "Free";
+  $("#TrackPrice")[0].innerHTML = price || "Free";
   
-  if(Song.links && (window.curEmbedSong != Song || $("#embeds")[0].innerHTML == "")) {
+  if(Track.links && (window.curEmbedTrack != Track || $("#embeds")[0].innerHTML == "")) {
     $("#embeds")[0].innerHTML = "";
-    window.curEmbedSong = Song;
-    if(Song.links.youtube) {
-      var ytid = Song.links.youtube.id;
+    window.curEmbedTrack = Track;
+    if(Track.links.youtube) {
+      var ytid = Track.links.youtube.id;
       if(ytid) {
         var ytEmbedWrap = newElem("div", $("#embeds")[0], "yt-embed-wrap embed-wrap");
         var ytEmbedWrap2 = newElem("div", ytEmbedWrap, "yt-embed-wrap2");
-        if(Song.links.youtube.aspectRatio) {
-          ytEmbedWrap2.style["padding-bottom"] = 100 / Song.links.youtube.aspectRatio + "%";
+        if(Track.links.youtube.aspectRatio) {
+          ytEmbedWrap2.style["padding-bottom"] = 100 / Track.links.youtube.aspectRatio + "%";
         }
         var ytEmbed = newElem("iframe", ytEmbedWrap2, { class: "yt-embed embed shadow dynamic", src: "https://www.youtube.com/embed/" + ytid + "?autoplay=0&origin=" + (location.href || (location + "") || location.pathname), frameborder: 0, allowfullscreen: true });
         window.curYtEmbed = ytEmbedWrap2;
         window.curYtEmbedId = ytid;
       }
     }
-    if(Song.links.soundcloud) {
-      scid = Song.links.soundcloud.id;
+    if(Track.links.soundcloud) {
+      scid = Track.links.soundcloud.id;
       if(scid) {
         var scEmbedWrap = newElem("div", $("#embeds")[0], "sc-embed-wrap embed-wrap");
         var scEmbedWrap2 = newElem("div", scEmbedWrap, "sc-embed-wrap2");
@@ -243,30 +243,30 @@ function drawSong(Song) {
   }
   return true;
 }
-function downloadSong(Song) {
-  if(!isObject(Song)) {
-    Song = Songs[Song];
+function downloadTrack(Track) {
+  if(!isObject(Track)) {
+    Track = Tracks[Track];
   }
-  if (!Song || !Song.download) return false;
+  if (!Track || !Track.download) return false;
   var popup = newPopup();
-  if (Song.img) {
-    var img = newElem("img", popup, { class: "song-image shadow", src: processLink(Song.img, true) });
+  if (Track.img) {
+    var img = newElem("img", popup, { class: "track-image shadow", src: processLink(Track.img, true) });
   }
   var dlTextWrap = newElem("div", popup, { class: "center popup-dl-text-wrap" });
-  newElem("span", dlTextWrap, { innerHTML: "Download", title: Song.name });
-  if (Song.title) {
-    var title = newElem("span", dlTextWrap, { class: "song-title", innerHTML: "\"" + Song.title + "\"", title: Song.name });
+  newElem("span", dlTextWrap, { innerHTML: "Download", title: Track.name });
+  if (Track.title) {
+    var title = newElem("span", dlTextWrap, { class: "track-title", innerHTML: "\"" + Track.title + "\"", title: Track.name });
   }
   var linksWrap = newElem("div", popup, "popup-dl-links-wrap");
   var n = 0;
-  for (var key in Song.download) {
-    if (Song.download.hasOwnProperty(key)) n++;
+  for (var key in Track.download) {
+    if (Track.download.hasOwnProperty(key)) n++;
   }
-  for (var key in Song.download) {
-    if (Song.download.hasOwnProperty(key)) {
+  for (var key in Track.download) {
+    if (Track.download.hasOwnProperty(key)) {
       var linkWrap = newElem("div", linksWrap, "link-wrap");
       linkWrap.style.width = 100 / n + "%";
-      var a = newElem("a", linkWrap, { class: "btn shadow dynamic wave", href: processLink(Song.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Song.name + ")") });
+      var a = newElem("a", linkWrap, { class: "btn shadow dynamic wave", href: processLink(Track.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Track.name + ")") });
     }
   }
 }
@@ -277,8 +277,8 @@ function load() {
   addEvent(window, "hashchange", function() {
     drawPage()
   });
-  addEvent($("#SongImage")[0], "click", function() {
-    newElem("img", newPopup(), { class: "song-image shadow", src: $("#SongImage")[0].src })
+  addEvent($("#TrackImage")[0], "click", function() {
+    newElem("img", newPopup(), { class: "track-image shadow", src: $("#TrackImage")[0].src })
   });
   drawPage()
 }
@@ -295,11 +295,11 @@ function drawPage(hash) {
     if(document.body.id == "list") return false;
     document.body.id = "list";
     document.title = "Hamty\'s Music";
-    drawSongs(Songs);
-  } else if(Songs[hash]) {
+    drawTracks(Tracks);
+  } else if(Tracks[hash]) {
     document.body.id = "info";
-    document.title = Songs[hash].name + " \| Hamty\'s Website"
-    drawSong(Songs[hash]);
+    document.title = Tracks[hash].name + " \| Hamty\'s Website"
+    drawTrack(Tracks[hash]);
   } else {
     removeHash()
   }
@@ -325,7 +325,7 @@ function submitSearch() {
       location.hash = "";
       setTimeout(submitSearch, 100);
       return false;
-    } else drawSongs(Search(updateSearchValue()))
+    } else drawTracks(Search(updateSearchValue()))
   } catch(error) {}
   return false
 }
@@ -334,7 +334,7 @@ function clearSearch() {
   if(elem) {
     elem.value = "";
     elem.setAttribute('value', "");
-    drawSongs(Songs);
+    drawTracks(Tracks);
   }
 }
 addEvent(document, "DOMContentLoaded", load);
