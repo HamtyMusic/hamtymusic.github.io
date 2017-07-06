@@ -36,54 +36,54 @@
     <script src="/scripts.js"></script>
     
     <style>
-    body {
-      font-family: 'Convergence', sans-serif;
-      background: #fff;
-      background:var(--col-bg-block);
-    }
-    .pb {
-      background: none;
-      border: none;
-    }
-    .link-buttons {
-      display:flex;
-      flex-direction:row;
-      flex-wrap:wrap;
-      justify-content: center;
-      width:100%;
-      margin-top:0.3em;
-      margin-bottom:1em;
-    }
-    .link-buttons > a {
-      display:inline-block;
-      margin:0.5em;
-    }
-    .link-buttons.over2 > a {
-      min-width:3em;
-      text-align:center;
-    }
-    .link-button {
-      fill:#343434;
-      fill:var(--col-btn-logo);
-      height:3em;
-      transition: var(--transition-primary);
-    }
-    .link-button.wide {
-      margin:0.3em 0;
-      height:2.4em;
-    }
-    .link-buttons a:hover > .link-button {
-      fill:var(--col-btn-logo-hover);
-    }
-    .link-buttons a:active > .link-button {
-      fill:var(--col-btn-logo-active);
-      transition: 0.1s ease-in;
-      animation: hvr-buzz 0.15s 0.1s infinite;
-    }
-    @keyframes hvr-buzz {
-      50% { transform: translateX(2px) rotate(2deg); }
-      100% { transform:  translateX(-2px) rotate(-2deg); }
-    }
+      body {
+        font-family: 'Convergence', sans-serif;
+        background: #fff;
+        background:var(--col-bg-block);
+      }
+      .pb {
+        background: none;
+        border: none;
+      }
+      .link-buttons {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content: center;
+        width:100%;
+        margin-top:0.3em;
+        margin-bottom:1em;
+      }
+      .link-buttons > a {
+        display:inline-block;
+        margin:0.5em;
+      }
+      .link-buttons.over2 > a {
+        min-width:3em;
+        text-align:center;
+      }
+      .link-button {
+        fill:#343434;
+        fill:var(--col-btn-logo);
+        height:3em;
+        transition: var(--transition-primary);
+      }
+      .link-button.wide {
+        margin:0.3em 0;
+        height:2.4em;
+      }
+      .link-buttons a:hover > .link-button {
+        fill:var(--col-btn-logo-hover);
+      }
+      .link-buttons a:active > .link-button {
+        fill:var(--col-btn-logo-active);
+        transition: 0.1s ease-in;
+        animation: hvr-buzz 0.15s 0.1s infinite;
+      }
+      @keyframes hvr-buzz {
+        50% { transform: translateX(2px) rotate(2deg); }
+        100% { transform:  translateX(-2px) rotate(-2deg); }
+      }
     </style>
   </head>
   <body>
@@ -154,12 +154,6 @@
             <div class="spacer"></div>
             <div style="font-size:1.3em;">Get in touch</div>
             <div class="link-buttons">
-              <a title="Disqus" target="_blank" href="/chat#disqus_thread">
-                <svg class="link-button" viewBox="0 0 139 135">
-                  Disqus: https://hamtymusic.github.io/chat#disqus_thread
-                  <path d="M72 135c-16.5 0-31.6-6-43.3-16l-28.7 3.9 11.1-27.4c-3.9-8.5-6-18-6-28 0-37.3 29.9-67.5 66.9-67.5 37 0 67 30.2 67 67.5s-30 67.5-67 67.5zm36.6-67.7v-.2c0-19.5-13.7-33.4-37.4-33.4h-25.6v67.5h25.2c23.9 0 37.8-14.5 37.8-33.9zm-37.1 17.4h-7.5v-34.3h7.5c11 0 18.3 6.3 18.3 17.1v.2c0 10.9-7.3 17.1-18.3 17.1z"/>
-                </svg>
-              </a>
               <a title="Discord" target="_blank" href="https://discord.gg/Zjc8PNF">
                 <svg class="link-button" viewBox="0 0 175 200">
                   Discord: https://discord.gg/Zjc8PNF

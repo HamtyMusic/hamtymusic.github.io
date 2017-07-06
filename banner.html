@@ -1,164 +1,15 @@
 <html>
   <head>
     <meta charset="utf-8"/>
+    
     <link href="https://fonts.googleapis.com/css?family=Convergence" rel="stylesheet">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    
     <link href="styles.css" rel="stylesheet">
     <script src="/scripts.js"></script>
-    <style>
-    html, body {
-      width:100%;
-      height:100%;
-    }
-    body {
-      font-family: 'Convergence', sans-serif;
-      color:#fff;
-    }
-    #background {
-      position:absolute;
-      width:100%;height:100%;
-      top:0;bottom:0;left:0;right:0;
-      background: center center;
-      background-size: cover;
-      opacity:var(--float-banner-bg-opacity);
-    }
-    script {
-      display: none !important;
-    }
-    .logo {
-      display: none;
-    }
-    .link-area-wrap {
-      position:absolute;
-      right:0;
-      left:0;
-      bottom:0;
-      display:flex;
-      flex-direction:row;
-      justify-content:center;
-      align-content:center;
-      align-items:center;
-    }
-    .link-area {
-      background:rgba(0,0,0,0.4);
-      font-size:1.1em;
-      padding:0 1em;
-      width:100%;
-      cursor:default;
-      z-index:100;
-    }
-    /*
-    .link, .link:visited {
-      display:inline-block;
-      padding:0.6em 1em;
-      text-align:center;
-      color:#e1e1e1;
-      cursor:pointer;
-    }
-    .link:hover, .link:active {
-      color:#fff;
-    }
-    .link, .link:visited, .link:hover, .link:active {
-      text-decoration:none;
-    }
-    */
-    .link, .splitter {
-      padding: 10px 0;
-      position: relative;
-      display: inline-block;
-      margin: 0.75em 1.25em;
-      outline: none;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 400;
-    }
-    .link, .link:hover, .link:active, .splitter {
-      color:#bbb;
-    }
-    .highlight {
-      animation: highlight 5s infinite ease-out;
-    }
-    @keyframes highlight {
-      50% {
-        color:#eee;
-        text-shadow: 0 0 1px rgba(255,255,255,0.3);
-      }
-    }
-    .link::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      padding: 10px 0;
-      max-width: 0;
-      border-bottom: 2px solid #fff;
-      color: #fff;
-      content: attr(data-hover);
-      transition: max-width 0.5s;
-      text-shadow: 0 0 1px rgba(255,255,255,0.3);
-    }
-    .link:hover::before,
-    .link:focus::before {
-      color: #fff;
-    max-width: 100%;
-    }
-    .splitter {
-      margin-left:0;
-      margin-right:0;
-    }
-    @media all and (min-height:240px) {
-      .logo {
-        width:50%; height:50%;
-        display:block;
-        position:absolute;
-        z-index:10;
-        background:url(/img/logo.svg) center center;
-        background-size:contain;
-        background-repeat:no-repeat;
-        left:0; right:0; top:0;
-        bottom:4em;
-        bottom:calc(7em - 25%);
-        margin:auto;
-        opacity:0.95;
-      }
-      .link-area {
-        width:auto;
-        border-top-left-radius:0.2em;
-        border-top-right-radius:0.2em;
-      }
-    }
-    @media all and (min-height:450px) {
-      .logo {
-        bottom: 2em;
-      }
-    }
-    @media all and (max-height:239px) {
-      .link-area-wrap {
-        top: 0;
-        margin:auto;
-        align-items: center
-      }
-      .link-area {
-        display:flex;
-        flex-direction:row;
-        justify-content:center;
-        vertical-align:middle;
-        border-top:3px dashed rgba(0,0,0,0.1);
-        border-bottom:3px dashed rgba(0,0,0,0.1);
-      }
-    }
-    @media all and (max-width:610px) {
-      body {
-        font-size:3.3vw;
-      }
-    }
-    @media all and (max-width:270px) {
-      body {
-        font-size:2.8vw;
-      }
-    }
-    </style>
+    <link href="banner_styles.css" rel="stylesheet">
+    
   </head>
   <body class="noselect">
     <div id="background"></div>
@@ -180,8 +31,6 @@
         <a href="/" class="link" data-hover="Home" target="_parent">Home</a>
         <span class="splitter">|</span>
         <a href="/tracks" class="link highlight" data-hover="Tracks" target="_parent">Tracks</a>
-        <span class="splitter">|</span>
-        <a href="/chat" class="link" data-hover="Chat" target="_parent">Chat</a>
         <span class="splitter">|</span>
         <a href="/TOU" class="link" data-hover="TOU" target="_parent" title="Terms of Use and Licensing">ToU</a>
       </div>
