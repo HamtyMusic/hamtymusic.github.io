@@ -550,12 +550,6 @@ html .circle {
 .menu-body.off {
   display: none;
 }
-.menu-wrap {
-  transition: var(--transition-main);
-}
-.grayout:active ~ .menu-wrap {
-  opacity: 0.8;
-}
 .menu {
   position: fixed;
   left: 0;
