@@ -205,7 +205,10 @@ function openMenu() {
   }
 }
 addEvent(document, "DOMContentLoaded", function() {
-  addEvent($(".header-menu-btn")[0], "click", openMenu)
+  var elem = $(".header-menu-btn")[0];
+  if(elem) {
+    addEvent(, "click", openMenu)
+  }
 });
 function setVectorSource(elem, id) {
   if(elem && id && images[id] && images[id].inline) {
