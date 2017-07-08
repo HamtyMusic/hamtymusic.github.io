@@ -21,7 +21,7 @@ var theme = {
   isSupported: function() {
     return (((typeof localStorage) !== "undefined") && (document.documentElement.classList && document.documentElement.classList.toggle))
   },
-  toggle: function() { 
+  toggle: function() {
     if (this.isSupported()) {
       localStorage.darkTheme = document.documentElement.classList.toggle("dark-theme")
     }
@@ -113,7 +113,7 @@ function newElem(type, parent, arg3, id) {
   function setAttributes(obj) {
     for(var i in obj) {
       if (obj.hasOwnProperty(i)) {
-        if(i.toLowerCase) { 
+        if(i.toLowerCase) {
           if(i.toLowerCase() == "innerhtml" || i.toLowerCase() == "outerhtml" || i.toLowerCase() == "id") {
             elem[i] = obj[i];
           } else if(i.toLowerCase() == "class") {
@@ -155,7 +155,7 @@ function newPopup() {
     return newPopup();
   }
   var popupBody = newElem("div", false, "popup-body"),
-    popupBg = newElem("div", popupBody, "popup-bg"),
+    popupBg = newElem("div", popupBody, "grayout"),
     popupWrap = newElem("div", popupBody, "popup-wrap"),
     popup = newElem("div", popupWrap, "popup pb shadow-5"),
     popupInner = newElem("div", popup, "popup-inner"),
@@ -165,9 +165,35 @@ function newPopup() {
   addEvent(closeButton, "click", closePopup);
   return popupInner;
   function closePopup() {
-    $(".popup-body")[0].outerHTML = "";
+    var elem = $(".popup-body")[0];
+    elem.parentNode.removeChild(elem);
   }
 }
+function openMenu() {
+  var otherMenu = $(".menu-body")[0];
+  if(otherMenu) {
+    elem.classList.remove("off");
+    elem.classList.remove("hide");
+    return otherMenu;
+  }
+  var menuBody = newElem("div", false, "menu-body"),
+    menuBg = newElem("div", menuBody, "grayout"),
+    menuWrap = newElem("div", menuBody, "menu-wrap"),
+    menu = newElem("div", menuWrap, "menu shadow-5"),
+    menuInner = newElem("div", menu, "menu-inner");
+  addEvent(menuBg, "click", closeMenu);
+  return menuBody;
+  function closeMenu() {
+    var elem = $(".menu-body")[0];
+    elem.classList.add("hide");
+    setTimeout(function() {
+      elem.classList.add("off")
+    }, 400);
+  }
+}
+addEvent(document, "DOMContentLoaded", function() {
+  addEvent($(".header-menu-btn"), "click", openMenu)
+});
 function setVectorSource(elem, id) {
   if(elem && id && images[id] && images[id].inline) {
     /*
@@ -186,7 +212,7 @@ function setVectorSource(elem, id) {
     return false;
   }
 }
-function removeHash() { 
+function removeHash() {
   var scrollV, scrollH, loc = window.location;
   if(!(loc.hash === "" || loc.hash === "_=_")) {
     scrollV = document.body.scrollTop; // Prevent scrolling by storing the page's current scroll offset

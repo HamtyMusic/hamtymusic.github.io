@@ -421,7 +421,7 @@ html .circle {
   overflow-x: hidden;
   z-index:20000;
 }
-.popup-bg {
+.grayout {
   cursor:pointer;
   position:fixed;
   width:100%; height:100%; min-height:100%;
@@ -479,14 +479,14 @@ html .circle {
 .circle-button:active {
   background: #999;
 }
-.popup-bg:active + * > * > .close-wrap, .close-wrap:active {
+.grayout:active + * > * > .close-wrap, .close-wrap:active {
   background: #f00;
 }
-.circle-button:hover > .button-icon::before, .circle-button:hover > .button-icon::after, .circle-button:active > .button-icon::before, .circle-button:active > .button-icon::after, .close-wrap:hover > .close::before, .close-wrap:hover > .close::after, .close-wrap:active > .close::before, .close-wrap:active > .close::after, .popup-bg:active + * > * > .close-wrap > .close::before, .popup-bg:active + * > * > .close-wrap > .close::after {
+.circle-button:hover > .button-icon::before, .circle-button:hover > .button-icon::after, .circle-button:active > .button-icon::before, .circle-button:active > .button-icon::after, .close-wrap:hover > .close::before, .close-wrap:hover > .close::after, .close-wrap:active > .close::before, .close-wrap:active > .close::after, .grayout:active + * > * > .close-wrap > .close::before, .grayout:active + * > * > .close-wrap > .close::after {
   background: #fff;
   background: var(--col-text-btn-dark);
 }
-.popup-bg:active + * > * > .close-wrap, .close-wrap:hover, .close-wrap:active, .circle-button:hover, .circle-button:active {
+.grayout:active + * > * > .close-wrap, .close-wrap:hover, .close-wrap:active, .circle-button:hover, .circle-button:active {
   border-radius:50%;
 }
 .close {
@@ -531,7 +531,13 @@ html .circle {
   fill: #bbb;
   margin: 0.8em 0 0.8em 1.4em;
 }
-.left-menu {
+.menu-wrap {
+  transition: 0.3s var(--curve-material);
+}
+.grayout:hover ~ .menu-wrap {
+  opacity: 0.7;
+}
+.menu {
   position: fixed;
   left: 0;
   top: 0;
@@ -545,9 +551,12 @@ html .circle {
   transition: 0.3s var(--curve-material);
   animation: 0.3s var(--curve-material) appear-four, 0.3s var(--curve-material) fade-in;
 }
-.left-menu.hide {
+.menu.hide {
   transform: translateX(-100%);
   opacity: 0;
+}
+.menu.off {
+  display: none;
 }
 #snowCanvas {
   position:fixed;
