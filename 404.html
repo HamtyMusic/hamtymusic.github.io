@@ -28,45 +28,6 @@
         background: none;
         border: none;
       }
-      .link-buttons {
-        display:flex;
-        flex-direction:row;
-        flex-wrap:wrap;
-        justify-content: center;
-        width:100%;
-        margin-top:0.3em;
-        margin-bottom:1em;
-      }
-      .link-buttons > a {
-        display:inline-block;
-        margin:0.5em;
-      }
-      .link-buttons.over2 > a {
-        min-width:3em;
-        text-align:center;
-      }
-      .link-button {
-        fill:#343434;
-        fill:var(--col-btn-logo);
-        height:3em;
-        transition: var(--transition-primary);
-      }
-      .link-button.wide {
-        margin:0.3em 0;
-        height:2.4em;
-      }
-      .link-buttons a:hover > .link-button {
-        fill:var(--col-btn-logo-hover);
-      }
-      .link-buttons a:active > .link-button {
-        fill:var(--col-btn-logo-active);
-        transition: 0.1s ease-in;
-        animation: hvr-buzz 0.15s 0.1s infinite;
-      }
-      @keyframes hvr-buzz {
-        50% { transform: translateX(2px) rotate(2deg); }
-        100% { transform:  translateX(-2px) rotate(-2deg); }
-      }
     </style>
   </head>
   <body>
