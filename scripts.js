@@ -214,12 +214,12 @@ function setVectorSource(elem, id) {
     if(images[id].inline.wide) {
       elem.classList.add("wide");
     }
-    elem.setAttribute("viewbox", images[id].inline.svg.viewbox);
+    elem.setAttributeNS(svgNS, "viewbox", images[id].inline.svg.viewbox);
     elem.innerHTML += id.capFirstLetter();
     newElem("path", elem, { d: images[id].inline.path.d });
     elem.outerHTML += "";
   } else {
-    return false;
+    return elem;
   }
 }
 function removeHash() {
