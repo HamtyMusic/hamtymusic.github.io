@@ -80,7 +80,7 @@
   --col-screen-grayout: rgba(230,230,230,0.9);
   --col-overlay: rgba(255,255,255,0.95);
 
-  --shadow-color: rgba(0,0,0,0.15);
+  --shadow-color: rgba(0,0,0,0.1);
   --shadow-elev-1:  0  1px  3px var(--shadow-color);
   --shadow-elev-2:  0  3px  6px var(--shadow-color);
   --shadow-elev-3:  0  5px  9px var(--shadow-color);
@@ -530,6 +530,13 @@ html .circle {
   height: 1.2em;
   fill: #bbb;
   margin: 0.8em 0 0.8em 1.4em;
+  cursor: pointer;
+}
+.header-menu-btn:hover {
+  fill: var(--col-btn-secondary-hover);
+}
+.header-menu-btn:active {
+  fill: var(--col-btn-secondary-active);
 }
 .menu-body {
   position: fixed;
@@ -558,7 +565,7 @@ html .circle {
   width: 20em;
   max-width: 80%;
   overflow: hidden;
-  padding: 3em 1em;
+  padding: 2.8em 1.4em;
   background: var(--col-bg-block);
   transition: 0.3s var(--curve-material);
   animation: 0.3s var(--curve-material) appear-four;
