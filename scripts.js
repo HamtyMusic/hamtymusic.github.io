@@ -172,8 +172,8 @@ function newPopup() {
 function openMenu() {
   var otherMenu = $(".menu-body")[0];
   if(otherMenu) {
-    elem.classList.remove("off");
-    elem.classList.remove("hide");
+    otherMenu.classList.remove("off");
+    otherMenu.classList.remove("hide");
     return otherMenu;
   }
   var menuBody = newElem("div", false, "menu-body"),
