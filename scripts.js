@@ -196,13 +196,13 @@ function openMenu() {
   newElem("div", menuInner, "divider-2");
   addEvent(menuBg, "click", closeMenu);
   return menuBody;
-  function closeMenu() {
-    var elem = $(".menu-body")[0];
-    elem.classList.add("hide");
-    setTimeout(function() {
-      elem.classList.add("off")
-    }, 400);
-  }
+}
+function closeMenu() {
+  var elem = $(".menu-body")[0];
+  elem.classList.add("hide");
+  setTimeout(function() {
+    elem.classList.add("off")
+  }, 400);
 }
 addEvent(document, "DOMContentLoaded", function() {
   var elem = $(".header-menu-btn")[0];
