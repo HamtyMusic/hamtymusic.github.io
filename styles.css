@@ -522,7 +522,7 @@ html .circle {
   cursor: pointer;
 }
 .menu-close-btn {
-  padding: 0.9em;
+  padding: 0.5em;
 }
 .header-menu-btn:hover {
   fill: var(--col-btn-gray-hover);
