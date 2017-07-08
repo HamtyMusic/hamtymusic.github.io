@@ -121,11 +121,15 @@ function newElem(type, parent, arg3, id) {
       if (obj.hasOwnProperty(i)) {
         if(i.toLowerCase) {
           if(i.toLowerCase() == "innerhtml" || i.toLowerCase() == "outerhtml" || i.toLowerCase() == "id") {
-            elem[i] = obj[i];
+            elem[i] = obj[i]
           } else if(i.toLowerCase() == "class") {
-            elem.setClass(obj[i]);
+            elem.setClass(obj[i])
           } else {
-            elem.setAttribute(i, obj[i]);
+            if(isSvg) {
+              elem.setAttributeNS(svgNS, i, obj[i])
+            } else {
+              elem.setAttribute(i, obj[i])
+            }
           }
         }
       }

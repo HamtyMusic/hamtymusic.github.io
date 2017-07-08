@@ -521,6 +521,9 @@ html .circle {
   border-radius: 50%;
   cursor: pointer;
 }
+.menu-close-btn {
+  padding: 0.9em;
+}
 .header-menu-btn:hover {
   fill: var(--col-btn-gray-hover);
 }
