@@ -523,6 +523,7 @@ html .circle {
 }
 .menu-close-btn {
   padding: 0.5em;
+  margin: 0.4em 0;
 }
 .header-menu-btn:hover {
   fill: var(--col-btn-gray-hover);
