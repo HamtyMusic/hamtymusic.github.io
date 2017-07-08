@@ -514,10 +514,11 @@ html .circle {
   padding: 0 0.6em;
   background: var(--col-bg-block);
 }
-.header-menu-btn {
+.header-menu-btn, .menu-close-btn {
   fill: var(--col-btn-gray);
   height: 2.8em;
   padding: 0.8em;
+  border-radius: 50%;
   cursor: pointer;
 }
 .header-menu-btn:hover {
