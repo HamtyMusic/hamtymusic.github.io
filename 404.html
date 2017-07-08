@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <title>Hamty's Website</title>
+    <meta charset="utf-8"/>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon16.png">
+    <link rel="icon" type="image/png" sizes="24x24" href="/img/favicon/favicon24.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/img/favicon/favicon64.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/img/favicon/favicon128.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="/img/favicon/favicon256.png">
+
+    <link href="https://fonts.googleapis.com/css?family=Convergence|Merienda:700|Yesteryear" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link href="styles.css" rel="stylesheet">
+    <script src="/scripts.js"></script>
+
+    <style>
+      body {
+        font-family: 'Convergence', sans-serif;
+        background: #fff;
+        background:var(--col-bg-block);
+      }
+      .pb {
+        background: none;
+        border: none;
+      }
+      .link-buttons {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content: center;
+        width:100%;
+        margin-top:0.3em;
+        margin-bottom:1em;
+      }
+      .link-buttons > a {
+        display:inline-block;
+        margin:0.5em;
+      }
+      .link-buttons.over2 > a {
+        min-width:3em;
+        text-align:center;
+      }
+      .link-button {
+        fill:#343434;
+        fill:var(--col-btn-logo);
+        height:3em;
+        transition: var(--transition-primary);
+      }
+      .link-button.wide {
+        margin:0.3em 0;
+        height:2.4em;
+      }
+      .link-buttons a:hover > .link-button {
+        fill:var(--col-btn-logo-hover);
+      }
+      .link-buttons a:active > .link-button {
+        fill:var(--col-btn-logo-active);
+        transition: 0.1s ease-in;
+        animation: hvr-buzz 0.15s 0.1s infinite;
+      }
+      @keyframes hvr-buzz {
+        50% { transform: translateX(2px) rotate(2deg); }
+        100% { transform:  translateX(-2px) rotate(-2deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-wrap">
+      <div class="banner-wrap">
+        <iframe class="banner" src="/banner"></iframe>
+      </div>
+      <div class="page">
+        <div class="wrap1">
+          <div class="pb center">
+            <div style="font-family:'Yesteryear';font-size:4em;">404</div>
+            That something is not here anymore. Maybe it wasn't here in the first place. What if it doesn't exist at all? Do i exist? Does the idea of existance exist? I guess we'll never find out. :o
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
