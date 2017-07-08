@@ -191,8 +191,7 @@ function openMenu() {
     menuWrap = newElem("div", menuBody, "menu-wrap"),
     menu = newElem("div", menuWrap, "menu shadow-5"),
     menuInner = newElem("div", menu, "menu-inner"),
-    closeButton = newElem("svg", menuInner, "menu-close-btn");
-  addEvent(closeButton, "click", closeMenu);
+    closeButton = newElem("svg", menuInner, { class: "menu-close-btn", onclick: closeMenu });
   setVectorSource(closeButton, "close");
   newElem("div", menuInner, "divider-2");
   addEvent(menuBg, "click", closeMenu);
