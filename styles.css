@@ -1,20 +1,20 @@
 :root {
   --transition-primary-b: 0.2s var(--curve-material);
   --transition-primary: all var(--transition-primary-b);
-  
+
   --size-font-primary: 20px;
   --size-page-max-width: 50rem;
   --size-border-radius: 2px;
   --size-divider-thickness: 1px;
   --size-divider-length: 70%;
   --size-divider-margin-side: calc(calc(100% - var(--size-divider-length)) / 2);
-  
+
   --float-banner-bg-opacity: 1;
-  
+
   --curve-wall: cubic-bezier(.82,1.5,0,.88);
   --curve-material: cubic-bezier(.55,0,.1,1);
   --curve-pop: cubic-bezier(0,1,0,1);
-  
+
   --col-text-primary: #212121;
   --col-text-secondary: #757575;
   --col-text-accent: #555;
@@ -79,7 +79,7 @@
   --col-link-active: var(--col-primary-700);
   --col-screen-grayout: rgba(230,230,230,0.9);
   --col-overlay: rgba(255,255,255,0.95);
-  
+
   --shadow-color: rgba(0,0,0,0.15);
   --shadow-elev-1:  0  1px  3px var(--shadow-color);
   --shadow-elev-2:  0  3px  6px var(--shadow-color);
@@ -96,7 +96,7 @@
 }
 :root.dark-theme {
   --float-banner-bg-opacity: 0.8;
-  
+
   --col-text-primary: #bbb;
   --col-text-secondary: #555;
   --col-text-accent: #888;
@@ -128,7 +128,7 @@
   --col-link-active: var(--col-primary-600);
   --col-screen-grayout: rgba(75,75,75,0.9);
   --col-overlay: rgba(53,53,53,0.95);
-  
+
   --shadow-banner: var(--shadow-elev-1);
 }
 * {
@@ -159,7 +159,8 @@ body {
   background: #f9f9f9;
   background: var(--col-bg-main);
   font-family: sans-serif;
-  padding-bottom:1.5em;
+  padding-top: 2.8em;
+  padding-bottom: 1.5em;
 }
 input {
   font-family: inherit;
@@ -242,7 +243,7 @@ form {
   background: var(--col-btn-primary);
   text-align: center;
   letter-spacing: 0.5px;
-  user-drag: none; 
+  user-drag: none;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -259,7 +260,7 @@ form {
 }
 .btn-alt {
   background: var(--col-btn-secondary);
-  user-drag: none; 
+  user-drag: none;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-drag: none;
@@ -516,6 +517,38 @@ html .circle {
   0%, 80% { width:0 }
   100% { width: 100%; }
 }
+.header {
+  position: fixed;
+  z-index: 20000;
+  top: 0;
+  width: 100%;
+  height: 2.8em;
+  background: var(--col-bg-block);
+}
+.header-menu-btn {
+  fill: var(--col-btn-gray);
+  height: 1.2em;
+  fill: #bbb;
+  margin: 0.8em 0 0.8em 1.4em;
+}
+.left-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 21000;
+  width: 20em;
+  max-width: 80%;
+  overflow: hidden;
+  padding: 3em 1em;
+  background: var(--col-bg-block);
+  transition: 0.3s var(--curve-material);
+  animation: 0.3s var(--curve-material) appear-four, 0.3s var(--curve-material) fade-in;
+}
+.left-menu.hide {
+  transform: translateX(-100%);
+  opacity: 0;
+}
 #snowCanvas {
   position:fixed;
   width:100vw;
@@ -543,6 +576,9 @@ html .circle {
 }
 @keyframes appear-three {
   0% { transform: translateX(-20em); }
+}
+@keyframes appear-four {
+  0% { transform: translateX(-100%); }
 }
 @keyframes scale-up {
   0% { transform: scale(0); }
