@@ -541,6 +541,8 @@ html .circle {
   right: 0;
   bottom: 0;
   z-index: 21000;
+  transition: 0.3s var(--curve-material);
+  animation: 0.3s var(--curve-material) fade-in;
 }
 .menu-body.hide {
   opacity: 0;
@@ -549,10 +551,10 @@ html .circle {
   display: none;
 }
 .menu-wrap {
-  transition: 0.3s var(--curve-material);
+  transition: var(--transition-main);
 }
-.grayout:hover ~ .menu-wrap {
-  opacity: 0.7;
+.grayout:active ~ .menu-wrap {
+  opacity: 0.8;
 }
 .menu {
   position: fixed;
@@ -565,9 +567,10 @@ html .circle {
   padding: 3em 1em;
   background: var(--col-bg-block);
   transition: 0.3s var(--curve-material);
-  animation: 0.3s var(--curve-material) appear-four, 0.3s var(--curve-material) fade-in;
+  animation: 0.3s var(--curve-material) appear-four;
 }
 .menu-body.hide .menu {
+  animation: none;
   transform: translateX(-100%);
 }
 #snowCanvas {
