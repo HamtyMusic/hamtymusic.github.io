@@ -517,7 +517,7 @@ html .circle {
 .header-menu-btn {
   fill: var(--col-btn-gray);
   height: 2.8em;
-  margin: 0.8em;
+  padding: 0.8em;
   cursor: pointer;
 }
 .header-menu-btn:hover {
