@@ -27,7 +27,7 @@ var theme = {
     }
   },
   set: function(theme) {
-    if(theme === 1 || theme === true || theme.toLowerCase() === "true" || theme.toLowerCase() === "dark") {
+    if(theme === 1 || theme === true || (theme.toLowerCase && ( theme.toLowerCase() === "true" || theme.toLowerCase() === "dark")) {
       localStorage.darkTheme = true
     } else {
       localStorage.darkTheme = false
