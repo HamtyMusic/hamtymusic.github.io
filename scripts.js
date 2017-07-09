@@ -26,10 +26,20 @@ var theme = {
       localStorage.darkTheme = document.documentElement.classList.toggle("dark-theme")
     }
   },
+  set: function(theme) {
+    if(theme === 1 || theme === true || theme.toLowerCase() === "true" || theme.toLowerCase() === "dark") {
+      localStorage.darkTheme = true
+    } else {
+      localStorage.darkTheme = false
+    }
+  },
   load: function() {
     if (this.isSupported()) {
       (localStorage.darkTheme == "true") ? document.documentElement.classList.add("dark-theme") : document.documentElement.classList.remove("dark-theme")
     }
+  },
+  get: function() {
+    return localStorage.darkTheme ? "light" : "dark"
   }
 }
 addEvent(window, "storage", function(e) {
@@ -187,14 +197,23 @@ function openMenu() {
     return otherMenu;
   }
   var menuBody = newElem("div", false, "menu-body"),
-    menuBg = newElem("div", menuBody, "grayout"),
-    menuWrap = newElem("div", menuBody, "menu-wrap"),
+    menuBg = newElem("div", menuBody, "grayout");
+  addEvent(menuBg, "click", closeMenu);
+  var menuWrap = newElem("div", menuBody, "menu-wrap"),
     menu = newElem("div", menuWrap, "menu shadow-5"),
     menuInner = newElem("div", menu, "menu-inner"),
     closeButton = newElem("svg", menuInner, { class: "menu-close-btn", onclick: "closeMenu()" });
   setVectorSource(closeButton, "close");
   newElem("div", menuInner, "divider-2");
-  addEvent(menuBg, "click", closeMenu);
+  var menuItem = newElem("div", menuInner, "menu-item"),
+    menuItemVisual = newElem("div", menuItem, "menu-item-visual"),
+    menuThemeToggleWrap = newElem("div", menuItemVisual, "material-toggle-wrap"),
+    menuThemeToggleCheckbox = newElem("input", menuThemeToggleWrap, { type: "checkbox", class: "material-toggle-checkbox", id: "themeToggle", checked: (theme.get() == "dark") }),
+    menuThemeToggleLabel = newElem("label", menuThemeToggleWrap, { for: "themeToggle", class: "material-toggle" });
+  addEvent(menuThemeToggleCheckbox, "change", function() {
+    theme.set($("#themeToggle")[0].checked)
+  });
+  var menuItemText = newElem("div", menuItem, { class: "menu-item-text", innerhtml: "Dark Theme"});
   return menuBody;
 }
 function closeMenu() {

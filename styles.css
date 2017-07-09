@@ -303,7 +303,49 @@ form {
     0% { transform: scale(0) }
   100% { transform: scale(1); opacity: 0 }
 }
+.material-toggle-wrap {
 
+}
+.material-toggle {
+  position: relative;
+  display: block;
+  height: 20px;
+  width: 44px;
+  background: #898989;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: var(--transition-primary);
+}
+.material-toggle::after {
+  position: absolute;
+  left: -2px;
+  top: -3px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: var(--shadow-elev-2);
+  content: '';
+  transition: inherit;
+}
+.material-toggle-checkbox {
+  display: none;
+}
+.material-toggle-checkbox:checked + .material-toggle {
+  background: #6FBEB5;
+}
+.material-toggle-checkbox:checked + .material-toggle::after {
+  left: 20px;
+  background: #179588;
+}
+.material-toggle-checkbox:disabled + .material-toggle {
+  background: #D5D5D5;
+  pointer-events: none;
+}
+.material-toggle-checkbox:disabled + .material-toggle::after {
+  background: #BCBDBC;
+}
 .pb {
   width:100%;
   background:#fff;
