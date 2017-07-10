@@ -354,7 +354,7 @@ addEvent(document, "DOMContentLoaded", function() {
     "/img/banners/banner4.jpg",
     "/img/banners/banner5.jpg"
   ];
-  var elem = $(".banner-wrap")[0];
+  var elem = $(".banner")[0];
   if (elem) {
     elem.style["background-image"] = "url(" + backgrounds[Math.floor(Math.random() * (backgrounds.length))] + ")"
   }
