@@ -1,6 +1,5 @@
 addEvent(window, "resize", LetItSnow);
-LetItSnow();
-function LetItSnow() {
+(function LetItSnow() {
   var snowCanvasId = "snowCanvas",
     framerate = 30,
     flakeNumberModifier = 0.1,
@@ -82,4 +81,4 @@ function LetItSnow() {
   function range(start, end) {
     return Math.random() * (end - start) + start;
   }
-}
+})();

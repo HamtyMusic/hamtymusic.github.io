@@ -450,7 +450,7 @@ html .circle {
   margin:0; padding:0;
   overflow-y: auto;
   overflow-x: hidden;
-  z-index:20000;
+  z-index:30000;
 }
 .grayout {
   cursor:pointer;
@@ -583,7 +583,7 @@ html .circle {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 21000;
+  z-index: 25000;
   transition: 0.3s var(--curve-material);
   animation: 0.3s var(--curve-material) fade-in;
 }
@@ -634,7 +634,7 @@ html .circle {
   position:fixed;
   width:100vw;
   height:100vh;
-  z-index:2000;
+  z-index:21000;
   top:0;
   left:0;
   pointer-events: none;

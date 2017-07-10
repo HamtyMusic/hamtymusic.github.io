@@ -174,9 +174,7 @@ function addScript(src) {
   if(scripts.src) {
     return false
   } else {
-    newElem("script", document.head, { src: src });
-    scripts.src = true;
-    return true
+    return scripts.src = newElem("script", document.head, { src: src })
   }
 }
 function isObject(val) {
@@ -291,11 +289,7 @@ function processLink(link, https) {
 function timeAgo(oldDate, length) {
   length = length || 3;
   var newDate = new Date();
-  if((newDate - oldDate) < 0) {
-    return "Coming soon";
-  }
-  var msInWeek = 1000 * 60 * 60 * 24 * 7,
-    msInDay = 1000 * 60 * 60 * 24;
+  if((newDate - oldDate) < 0) return "Coming soon";
   var deltaYr = newDate.getFullYear() - oldDate.getFullYear();
   if (oldDate.getMonth() > newDate.getMonth() ||
     (oldDate.getMonth() === newDate.getMonth() && oldDate.getDate() > newDate.getDate())) {
@@ -309,7 +303,7 @@ function timeAgo(oldDate, length) {
     deltaMn--;
   }
   var tempDate = new Date(oldDate.getFullYear() + deltaYr, oldDate.getMonth() + deltaMn, oldDate.getDate());
-  var tempDy = (newDate.getTime() - tempDate.getTime()) / msInDay;
+  var tempDy = (newDate.getTime() - tempDate.getTime()) / 1000 * 60 * 60 * 24;
   var deltaDy = Math.floor(tempDy);
   var tempHr = (tempDy - deltaDy) * 24;
   var deltaHr = Math.floor(tempHr);
