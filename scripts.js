@@ -32,6 +32,7 @@ var theme = {
     } else {
       localStorage.darkTheme = false
     }
+    this.load()
   },
   load: function() {
     if (this.isSupported()) {
