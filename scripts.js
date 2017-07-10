@@ -282,7 +282,7 @@ function processLink(link, https) {
     link = link.join("")
   }
   if (https) {
-    link = link.r-eplace(/^http:\/\//i, 'https://')
+    link = link.replace(/^http:\/\//i, 'https://')
   }
   return link
 }
