@@ -296,8 +296,7 @@ function timeAgo(then, length) {
   var deltaMn = now.getMonth() - then.getMonth();
   if (deltaMn < 0) deltaMn += 12;
   if (then.getDate() > now.getDate()) deltaMn--;
-  var tempDate = new Date(then.getFullYear() + deltaYr, then.getMonth() + deltaMn, then.getDate());
-  var tempDy = (now.getTime() - tempDate.getTime()) / (1000 * 60 * 60 * 24);
+  var tempDy = (now.getTime() - new Date(then.getFullYear() + deltaYr, then.getMonth() + deltaMn, then.getDate()).getTime()) / (1000 * 60 * 60 * 24);
   var deltaDy = Math.floor(tempDy);
   var tempHr = (tempDy - deltaDy) * 24;
   var deltaHr = Math.floor(tempHr);
