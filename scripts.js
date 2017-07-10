@@ -131,10 +131,13 @@ function newElem(type, parent, arg3, id) {
     for(var i in obj) {
       if (obj.hasOwnProperty(i)) {
         if(i.toLowerCase) {
-          if(i.toLowerCase() == "innerhtml" || i.toLowerCase() == "outerhtml" || i.toLowerCase() == "id") {
+          var p = i.toLowerCase();
+          if(p == "innerhtml" || p == "outerhtml" || p == "id") {
             elem[i] = obj[i]
-          } else if(i.toLowerCase() == "class") {
+          } else if(p == "class") {
             elem.setClass(obj[i])
+          } else if(p == "text") {
+            elem.insertAdjacentHTML("beforeend", obj[i])
           } else {
             if(isSvg) {
               elem.setAttributeNS(svgNS, i, obj[i])
@@ -214,7 +217,7 @@ function openMenu() {
   addEvent(menuThemeToggleCheckbox, "change", function() {
     theme.set($("#themeToggle")[0].checked)
   });
-  var menuItemText = newElem("div", menuItem, { class: "menu-item-text", innerhtml: "Dark Theme"});
+  var menuItemText = newElem("div", menuItem, { class: "menu-item-text", text: "Dark Theme" });
   return menuBody;
 }
 function closeMenu() {
@@ -241,7 +244,7 @@ function setVectorSource(elem, id) {
       elem.classList.add("wide");
     }
     elem.setAttributeNS(svgNS, "viewbox", images[id].inline.svg.viewbox);
-    elem.innerHTML += id.capFirstLetter();
+    elem.insertAdjacentHTML("beforeend", id.capFirstLetter());
     newElem("path", elem, { d: images[id].inline.path.d });
     elem.outerHTML += "";
   } else {
