@@ -681,6 +681,11 @@ html .circle {
 @keyframes scale-up {
   0% { transform: scale(0); }
 }
+@keyframes scale-up-slight {
+  0% {
+    transform:scale(0.5);
+  }
+}
 @keyframes roundify {
   100% { border-radius: 50%; }
 }
