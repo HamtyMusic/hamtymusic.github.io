@@ -354,7 +354,10 @@ addEvent(document, "DOMContentLoaded", function() {
     "/img/banners/banner4.jpg",
     "/img/banners/banner5.jpg"
   ];
-  $(".banner-wrap")[0].style["background-image"] = "url(" + backgrounds[Math.floor(Math.random() * (backgrounds.length))] + ")"
+  var elem = $(".banner-wrap")[0];
+  if (elem) {
+    elem.style["background-image"] = "url(" + backgrounds[Math.floor(Math.random() * (backgrounds.length))] + ")"
+  }
 }, { once: true });
 (function() {
   var m = month[getCurrentMonth()];
