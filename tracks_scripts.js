@@ -102,7 +102,7 @@ function drawTracks(Tracks, defTracks) {
         }
       }
       if(Track.shown != should && Track.elem.classList && Track.elem.classList.toggle) {
-        if(should) {          
+        if(should) {
           Track.elem.classList.remove("hide");
           Track.shown = true;
           if(showAfter < 5) {
@@ -139,7 +139,7 @@ function drawTrack(Track) {
   addEvent(title, "dblclick", function() {
     selectText(title);
   });
-  
+
   var links = $("#TrackLinks")[0];
   links.innerHTML = "";
   var dlLinks = $("#TrackDlLinks")[0];
@@ -182,7 +182,7 @@ function drawTrack(Track) {
       date2.setAttribute("title", (timeAgo(date)));
     }
   }
-  
+
   var table = $("#TrackDetailsTable")[0];
   table.innerHTML = "";
   if(Track.details) {
@@ -206,7 +206,7 @@ function drawTrack(Track) {
     var price = Track.details.price;
   }
   $("#TrackPrice")[0].innerHTML = price || "Free";
-  
+
   if(Track.links && (window.curEmbedTrack != Track || $("#embeds")[0].innerHTML == "")) {
     $("#embeds")[0].innerHTML = "";
     window.curEmbedTrack = Track;
@@ -270,18 +270,6 @@ function downloadTrack(Track) {
     }
   }
 }
-function load() {
-  window.load = function() {
-    return false
-  }
-  addEvent(window, "hashchange", function() {
-    drawPage()
-  });
-  addEvent($("#TrackImage")[0], "click", function() {
-    newElem("img", newPopup(), { class: "track-image shadow", src: $("#TrackImage")[0].src })
-  });
-  drawPage()
-}
 function drawPage(hash) {
   if (typeof hash === 'string' || hash instanceof String) {
     hash = hash || location.hash
@@ -337,4 +325,12 @@ function clearSearch() {
     drawTracks(Tracks);
   }
 }
-addEvent(document, "DOMContentLoaded", load);
+addEvent(document, "DOMContentLoaded", function() {
+  addEvent(window, "hashchange", function() {
+    drawPage()
+  });
+  addEvent($("#TrackImage")[0], "click", function() {
+    newElem("img", newPopup(), { class: "track-image shadow", src: $("#TrackImage")[0].src })
+  });
+  drawPage()
+}, { once: true })
