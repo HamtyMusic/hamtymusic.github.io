@@ -179,7 +179,7 @@ function drawTrack(Track) {
       }) + " | " + date.toLocaleTimeString([])));
       var date2 = $("#dateRelative")[0];
       date2.innerHTML = timeAgo(date, 1);
-      date2.setAttribute("title", (timeAgo(date)));
+      date2.setAttribute("title", (timeAgo(date)))
     }
   }
 
@@ -191,16 +191,16 @@ function drawTrack(Track) {
         var name = i.capFirstLetter();
         var value = Track.details[i];
         if(i == "type") {
-          value = ["Original", "Remix"][value];
+          value = ["Original", "Remix"][value]
         } else if(i == "duration") {
           var min = Math.floor(value / 60);
           var sec = value - min * 60;
           sec = (sec < 10) ? "0" + sec : sec;
-          value = min + ":" + sec;
+          value = min + ":" + sec
         }
         var row = newElem("div", table, "track-details-table-row");
         newElem("div", row, { class: "track-details-table-cell name", innerHTML: name });
-        newElem("div", row, { class: "track-details-table-cell value", innerHTML: value });
+        newElem("div", row, { class: "track-details-table-cell value", innerHTML: value })
       }
     });
     var price = Track.details.price;
@@ -216,57 +216,47 @@ function drawTrack(Track) {
         var ytEmbedWrap = newElem("div", $("#embeds")[0], "yt-embed-wrap embed-wrap");
         var ytEmbedWrap2 = newElem("div", ytEmbedWrap, "yt-embed-wrap2");
         if(Track.links.youtube.aspectRatio) {
-          ytEmbedWrap2.style["padding-bottom"] = 100 / Track.links.youtube.aspectRatio + "%";
+          ytEmbedWrap2.style["padding-bottom"] = 100 / Track.links.youtube.aspectRatio + "%"
         }
         var ytEmbed = newElem("iframe", ytEmbedWrap2, { class: "yt-embed embed shadow dynamic", src: "https://www.youtube.com/embed/" + ytid + "?autoplay=0&origin=" + (location.href || (location + "") || location.pathname), frameborder: 0, allowfullscreen: true });
-        window.curYtEmbed = ytEmbedWrap2;
-        window.curYtEmbedId = ytid;
+        window.curYtEmbed = ytEmbedWrap2
       }
-    }
-    if(Track.links.soundcloud) {
-      scid = Track.links.soundcloud.id;
-      if(scid) {
-        var scEmbedWrap = newElem("div", $("#embeds")[0], "sc-embed-wrap embed-wrap");
-        var scEmbedWrap2 = newElem("div", scEmbedWrap, "sc-embed-wrap2");
-        var scEmbed = newElem("iframe", scEmbedWrap2, { class: "sc-embed embed shadow dynamic", src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" + scid + "&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true", frameborder: 0 });
-        window.curScEmbed = scEmbedWrap2;
-        window.curScEmbedId = scid;
-      }
+      window.curYtEmbedId = ytid
     }
     if($("#embeds")[0].innerHTML != "") {
       var closeButton = newElem("div", $("#embeds")[0], "close-wrap small", "embeds-close");
       var closeButtonIcon = newElem("div", closeButton, "close", "embeds-close-icon");
       addEvent(closeButton, "click", function() {
-        $("#embeds")[0].innerHTML = "";
-      });
+        $("#embeds")[0].innerHTML = ""
+      })
     }
   }
-  return true;
+  return true
 }
 function downloadTrack(Track) {
   if(!isObject(Track)) {
-    Track = Tracks[Track];
+    Track = Tracks[Track]
   }
   if (!Track || !Track.download) return false;
   var popup = newPopup();
   if (Track.img) {
-    var img = newElem("img", popup, { class: "track-image shadow", src: processLink(Track.img, true) });
+    var img = newElem("img", popup, { class: "track-image shadow", src: processLink(Track.img, true) })
   }
   var dlTextWrap = newElem("div", popup, { class: "center popup-dl-text-wrap" });
   newElem("span", dlTextWrap, { innerHTML: "Download", title: Track.name });
   if (Track.title) {
-    var title = newElem("span", dlTextWrap, { class: "track-title", innerHTML: "\"" + Track.title + "\"", title: Track.name });
+    var title = newElem("span", dlTextWrap, { class: "track-title", innerHTML: "\"" + Track.title + "\"", title: Track.name })
   }
   var linksWrap = newElem("div", popup, "popup-dl-links-wrap");
   var n = 0;
   for (var key in Track.download) {
-    if (Track.download.hasOwnProperty(key)) n++;
+    if (Track.download.hasOwnProperty(key)) n++
   }
   for (var key in Track.download) {
     if (Track.download.hasOwnProperty(key)) {
       var linkWrap = newElem("div", linksWrap, "link-wrap");
       linkWrap.style.width = 100 / n + "%";
-      var a = newElem("a", linkWrap, { class: "btn shadow dynamic wave", href: processLink(Track.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Track.name + ")") });
+      var a = newElem("a", linkWrap, { class: "btn shadow dynamic wave", href: processLink(Track.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Track.name + ")") })
     }
   }
 }
