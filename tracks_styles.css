@@ -424,7 +424,6 @@ body#info #embeds-close .close::before, body#info #embeds-close .close::after {
 }
 @media only screen and (min-width: 1200px) and (min-height:500px) {
   body#list #embeds {
-    padding:1em;
     position:fixed;
     left:1em;
     bottom:1em;
@@ -436,7 +435,9 @@ body#info #embeds-close .close::before, body#info #embeds-close .close::after {
     animation: appear-three 0.3s 0.5s var(--curve-pop);
   }
   body#list #embeds-close {
-    display:block;
+    display: block;
+    top: -0.9em;
+    right: -0.9em;
   }
   body#list .sc-embed-wrap2 {
     padding-bottom: 50%;
