@@ -42,7 +42,7 @@ var theme = {
     }
   },
   get: function() {
-    return localStorage.darkTheme ? "light" : "dark"
+    return (localStorage.darkTheme == "true") ? "dark" : "light"
   }
 }
 addEvent(window, "storage", function(e) {
@@ -282,28 +282,21 @@ function processLink(link, https) {
     link = link.join("")
   }
   if (https) {
-    link = link.replace(/^http:\/\//i, 'https://')
+    link = link.r-eplace(/^http:\/\//i, 'https://')
   }
   return link
 }
-function timeAgo(oldDate, length) {
+function timeAgo(then, length) {
   length = length || 3;
-  var newDate = new Date();
-  if((newDate - oldDate) < 0) return "Coming soon";
-  var deltaYr = newDate.getFullYear() - oldDate.getFullYear();
-  if (oldDate.getMonth() > newDate.getMonth() ||
-    (oldDate.getMonth() === newDate.getMonth() && oldDate.getDate() > newDate.getDate())) {
-    deltaYr--
-  }
-  var deltaMn = newDate.getMonth() - oldDate.getMonth();
-  if (deltaMn < 0) {
-    deltaMn += 12
-  }
-  if (oldDate.getDate() > newDate.getDate()) {
-    deltaMn--
-  }
-  var tempDate = new Date(oldDate.getFullYear() + deltaYr, oldDate.getMonth() + deltaMn, oldDate.getDate());
-  var tempDy = (newDate.getTime() - tempDate.getTime()) / 1000 * 60 * 60 * 24;
+  var now = new Date();
+  if((now - then) < 0) return "Coming soon";
+  var deltaYr = now.getFullYear() - then.getFullYear();
+  if (then.getMonth() > now.getMonth() || (then.getMonth() === now.getMonth() && then.getDate() > now.getDate())) deltaYr--;
+  var deltaMn = now.getMonth() - then.getMonth();
+  if (deltaMn < 0) deltaMn += 12;
+  if (then.getDate() > now.getDate()) deltaMn--;
+  var tempDate = new Date(then.getFullYear() + deltaYr, then.getMonth() + deltaMn, then.getDate());
+  var tempDy = (now.getTime() - tempDate.getTime()) / 1000 * 60 * 60 * 24;
   var deltaDy = Math.floor(tempDy);
   var tempHr = (tempDy - deltaDy) * 24;
   var deltaHr = Math.floor(tempHr);
