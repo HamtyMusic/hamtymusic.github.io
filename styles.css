@@ -383,6 +383,7 @@ html .circle {
   padding-bottom: 45%;
   position:relative;
   display:table;
+  z-index: 18000;
   box-shadow: var(--shadow-banner, none);
 }
 @media only screen and (min-width: 1000px) {
