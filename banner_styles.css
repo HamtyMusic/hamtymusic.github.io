@@ -5,6 +5,7 @@ html, body {
 body {
   font-family: 'Convergence', sans-serif;
   color:#fff;
+  background: transparent;
 }
 #background {
   position:absolute;

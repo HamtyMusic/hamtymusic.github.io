@@ -161,9 +161,9 @@ function newElem(type, parent, arg3, id) {
   }
   return elem;
 }
-function addEvent(elem, evnt, func) {
+function addEvent(elem, evnt, func, options) {
   if (elem.addEventListener) { // W3C DOM
-    elem.addEventListener(evnt, func, false);
+    elem.addEventListener(evnt, func, options);
   } else if (elem.attachEvent) { // IE DOM
     elem.attachEvent("on" + evnt, func);
   } else { // No much to do
@@ -322,12 +322,12 @@ function timeAgo(then, length) {
     sb.push(deltaMt + ' minute' + (deltaMt > 1 ? 's' : ''));
   }
   if (deltaSc > 0) {
-    sb.push(deltaSc + ' second' + (deltaSc > 1 ? 's' : ''));
+    sb.push(deltaSc + ' second' + (deltaSc > 1 ? 's' : ''))
   }
   if (sb.length > length) {
-    sb.length = length;
+    sb.length = length
   }
-  return (sb.join(', ') + " ago");
+  return (sb.join(', ') + " ago")
 }
 function getCurrentMonth() {
   return (new Date()).getMonth()
@@ -336,19 +336,31 @@ function selectText(elem) {
   if (document.selection) {
     var range = document.body.createTextRange();
     range.moveToElementText(elem);
-    range.select();
+    range.select()
   } else if (window.getSelection) {
     var range = document.createRange();
     range.selectNodeContents(elem);
     window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
+    window.getSelection().addRange(range)
   }
 }
+addEvent(document, "DOMContentLoaded", function() {
+  var backgrounds = [
+    "/img/banners/banner1.jpg",
+    "/img/banners/banner2.jpg",
+    "/img/banners/banner3.jpg",
+    "/img/banners/banner3.jpg",
+    "/img/banners/banner3.jpg",
+    "/img/banners/banner4.jpg",
+    "/img/banners/banner5.jpg"
+  ];
+  $(".banner-wrap")[0].style["background-image"] = "url(" + backgrounds[Math.floor(Math.random() * (backgrounds.length))] + ")"
+}, { once: true });
 (function() {
   var m = month[getCurrentMonth()];
   if((location.pathname != "/banner") && (m == "December" || m == "January" || m == "February")) {
     addEvent(document, "DOMContentLoaded", function() {
       addScript("/LetItSnow.js")
-    });
+    }, { once: true });
   }
 })();
