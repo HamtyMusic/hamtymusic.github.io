@@ -134,7 +134,7 @@ function newElem(type, parent, arg3, id) {
       if (obj.hasOwnProperty(i)) {
         if(i.toLowerCase) {
           var p = i.toLowerCase();
-          if(p == "innerhtml" || p == "outerhtml" || p == "id") {
+          if(p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" ) {
             elem[i] = obj[i]
           } else if(p == "class") {
             elem.setClass(obj[i])
