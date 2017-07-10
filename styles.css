@@ -627,7 +627,7 @@ html .circle {
 }
 .menu-item-text {
   width: 100%;
-  padding-left: 0.5em;
+  padding-left: 1em;
   line-height: 1.8em;
 }
 #snowCanvas {
