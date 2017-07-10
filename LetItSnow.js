@@ -1,4 +1,5 @@
 addEvent(window, "resize", LetItSnow);
+LetItSnow();
 function LetItSnow() {
   var snowCanvasId = "snowCanvas",
     framerate = 30,
