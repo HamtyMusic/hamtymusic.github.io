@@ -218,7 +218,8 @@ function openMenu() {
     closeButton = newElem("svg", menuInner, { class: "menu-close-btn", onclick: "closeMenu()" });
   setVectorSource(closeButton, "close");
   newElem("div", menuInner, "divider-2");
-  var menuItem = newElem("div", menuInner, "menu-item"),
+  var menuItems = newElem("div", menuInner, "menu-items")
+    menuItem = newElem("div", menuItems, "menu-item"),
     menuItemVisual = newElem("div", menuItem, "menu-item-visual"),
     menuThemeToggleWrap = newElem("div", menuItemVisual, "material-toggle-wrap"),
     menuThemeToggleCheckbox = newElem("input", menuThemeToggleWrap, { type: "checkbox", class: "material-toggle-checkbox", id: "themeToggle", checked: (theme.get() == "dark") }),

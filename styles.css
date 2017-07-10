@@ -16,6 +16,7 @@
   --curve-pop: cubic-bezier(0,1,0,1);
 
   --font-primary: "Open Sans", sans-serif;
+  --font-weight-primary: 300;
 
   --col-text-primary: #212121;
   --col-text-secondary: #757575;
@@ -462,6 +463,7 @@ html .circle {
   overflow-x: hidden;
   z-index:30000;
   font-family: var(--font-primary);
+  font-weight: var(--font-weight-primary);
 }
 .popup-wrap {
   width:100%; min-height:100%;
@@ -559,6 +561,7 @@ html .circle {
   height: 2.8em;
   padding: 0.4em 1em;
   font-family: var(--font-primary);
+  font-weight: var(--font-weight-primary);
   background: var(--col-bg-header);
 }
 .header-menu-btn, .menu-close-btn {
@@ -589,6 +592,7 @@ html .circle {
   bottom: 0;
   z-index: 25000;
   font-family: var(--font-primary);
+  font-weight: var(--font-weight-primary);
   transition: 0.3s var(--curve-material);
   animation: 0.3s var(--curve-material) fade-in;
 }
@@ -615,9 +619,11 @@ html .circle {
   animation: none;
   transform: translateX(-100%);
 }
+.menu-items {
+  padding-top: 1em;
+}
 .menu-item {
-  height: 2.8em;
-  padding: 0.4em 0;
+  height: 2.2em;
   display: flex;
   flex-wrap: nowrap;
 }
@@ -633,7 +639,7 @@ html .circle {
 .menu-item-text {
   width: 100%;
   padding-left: 1em;
-  line-height: 1.8em;
+  line-height: 2em;
 }
 #snowCanvas {
   position:fixed;
