@@ -227,14 +227,14 @@ function openMenu() {
     theme.set($("#themeToggle")[0].checked)
   });
   var menuItemText = newElem("div", menuItem, { class: "menu-item-text", text: "Dark Theme" });
-  return menuBody;
+  return menuBody
 }
 function closeMenu() {
   var elem = $(".menu-body")[0];
   elem.classList.add("hide");
   setTimeout(function() {
     elem.classList.add("off")
-  }, 400);
+  }, 400)
 }
 addEvent(document, "DOMContentLoaded", function() {
   var elem = $(".header-menu-btn")[0];
@@ -250,14 +250,14 @@ function setVectorSource(elem, id) {
     */
     images[id].inline;
     if(images[id].inline.wide) {
-      elem.classList.add("wide");
+      elem.classList.add("wide")
     }
     elem.setAttributeNS(svgNS, "viewbox", images[id].inline.svg.viewbox);
     elem.insertAdjacentHTML("beforeend", id.capFirstLetter());
     newElem("path", elem, { d: images[id].inline.path.d });
-    elem.outerHTML += "";
+    elem.outerHTML += ""
   } else {
-    return elem;
+    return elem
   }
 }
 function removeHash() {
@@ -267,24 +267,24 @@ function removeHash() {
     scrollH = document.body.scrollLeft;
     loc.hash = "";
     document.body.scrollTop = scrollV; // Restore the scroll offset, should be flicker free
-    document.body.scrollLeft = scrollH;
+    document.body.scrollLeft = scrollH
   }
   if("replaceState" in history) {
-    history.replaceState("", document.title, loc.pathname + loc.search);
+    history.replaceState("", document.title, loc.pathname + loc.search)
   }
 }
 function processLink(link, https) {
   if (!link) return undefined;
   if (link.href) {
-    link = link.href;
+    link = link.href
   }
   if (link.constructor === Array) {
-    link = link.join("");
+    link = link.join("")
   }
   if (https) {
-    link = link.replace(/^http:\/\//i, 'https://');
+    link = link.replace(/^http:\/\//i, 'https://')
   }
-  return link;
+  return link
 }
 function timeAgo(oldDate, length) {
   length = length || 3;
@@ -293,14 +293,14 @@ function timeAgo(oldDate, length) {
   var deltaYr = newDate.getFullYear() - oldDate.getFullYear();
   if (oldDate.getMonth() > newDate.getMonth() ||
     (oldDate.getMonth() === newDate.getMonth() && oldDate.getDate() > newDate.getDate())) {
-    deltaYr--;
+    deltaYr--
   }
   var deltaMn = newDate.getMonth() - oldDate.getMonth();
   if (deltaMn < 0) {
-    deltaMn += 12;
+    deltaMn += 12
   }
   if (oldDate.getDate() > newDate.getDate()) {
-    deltaMn--;
+    deltaMn--
   }
   var tempDate = new Date(oldDate.getFullYear() + deltaYr, oldDate.getMonth() + deltaMn, oldDate.getDate());
   var tempDy = (newDate.getTime() - tempDate.getTime()) / 1000 * 60 * 60 * 24;
