@@ -27,6 +27,7 @@
   --col-bg-main: #f9f9f9;
   --col-bg-block: #fff;
   --col-bg-2: #f2f2f2;
+  --col-bg-header: var(--col-bg-block);
   --col-search: var(--col-bg-2);
   --col-search-focus: var(--col-bg-block);
   --col-primary-hue: 187;
@@ -554,7 +555,7 @@ html .circle {
   width: 100%;
   height: 2.8em;
   padding: 0.4em 1em;
-  background: var(--col-bg-block);
+  background: var(--col-bg-header);
 }
 .header-menu-btn, .menu-close-btn {
   fill: var(--col-btn-gray);
