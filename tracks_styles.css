@@ -381,6 +381,7 @@ body#info #embeds {
   margin-top:1em;
 }
 #embeds {
+  padding: 0;
   z-index:2000;
   display:flex;
   flex-direction:column;
@@ -398,9 +399,6 @@ body#info #embeds {
   margin-top:0.7em;
 }
 @media (min-width: 1000px) {
-  body#info #embeds {
-    padding: 0;
-  }
   body#info .embed-wrap + .embed-wrap {
     margin-top: 1em;
   }

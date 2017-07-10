@@ -4,32 +4,32 @@ var detailProperties = [ "genre", "duration", "tempo", "type" ],
 function Search(str) {
   str = str || "";
   if (str.length == 0) {
-    return Tracks;
+    return Tracks
   }
   var srchTgs = str.split(" ");
   for (var i = 0; i < srchTgs.length; i++) {
-    srchTgs[i] = srchTgs[i].toLowerCase();
+    srchTgs[i] = srchTgs[i].toLowerCase()
   }
   var mObj = {};
   for (i in Tracks) {
-    if (!Tracks.hasOwnProperty(i)) { continue; }
-    mObj[i] = true;
+    if (!Tracks.hasOwnProperty(i)) { continue }
+    mObj[i] = true
   }
   for (var i = 0; i < srchTgs.length; i++) {
     for (var y in mObj) {
       if (Tracks[y].name && mObj.hasOwnProperty(y)) {
         if (((Tracks[y].name).toLowerCase()).search(srchTgs[i]) == -1) {
-          delete mObj[y];
+          delete mObj[y]
         }
       }
     }
   }
   var results = {};
   for (i in mObj) {
-    if (!mObj.hasOwnProperty(i)) { continue; }
-    results[i] = (Tracks[i]);
+    if (!mObj.hasOwnProperty(i)) { continue }
+    results[i] = (Tracks[i])
   }
-  return results;
+  return results
 }
 
 function drawTracks(Tracks, defTracks) {
@@ -41,7 +41,7 @@ function drawTracks(Tracks, defTracks) {
   /* hideTracks(Tracks); */
   var showAfter = 0;
   for (var i in defTracks) {
-    if (!defTracks.hasOwnProperty(i)) { continue; }
+    if (!defTracks.hasOwnProperty(i)) { continue }
     (function () {
       var Track = defTracks[i];
       var should = Tracks.hasOwnProperty(i);
@@ -52,33 +52,14 @@ function drawTracks(Tracks, defTracks) {
         Track.shown = false;
         if (Track.img) {
           var imgPar = newElem("a", elem, { class: "track-image-wrap lighten", href: "#" + i });
-          var img = newElem("img", imgPar, { class: "track-image shadow dynamic", src: Track.img.replace(/^http:\/\//i, 'https://') });
+          var img = newElem("img", imgPar, { class: "track-image shadow dynamic", src: Track.img.replace(/^http:\/\//i, 'https://') })
         }
         var title = newElem("div", elem, { class: "track-title", innerHTML: Track.title, title: Track.name });
         addEvent(title, "dblclick", function() {
-          selectText(title);
+          selectText(title)
         });
         var author = newElem("div", elem, { class: "track-author", innerHTML: Track.author, title: Track.name });
-
-        var links = newElem("div", newElem("div", elem, "link-buttons-wrap"), "link-buttons");
-        var numberOfLinks = 0;
-        if(Track.download) {
-          var a = newElem("a", links, { class: "link download-link", title: "Click for download options" }),
-            dlbtn = newElem("svg", a, "link-button");
-          setVectorSource(dlbtn, "download");
-          addEvent(a, "click", function() {
-            downloadTrack(Track);
-          });
-          numberOfLinks++;
-        }
-        linksToDisplay.forEach(function(key) {
-          if(Track.links.hasOwnProperty(key[0]) && Track.links[key[0]]) {
-            var a = newElem("a", links, { class: "link", href: processLink(Track.links[key[0]]), target: "_blank", title: ("\"" + Track.name + "\" on " + key[1]) });
-            var dlbtn = newElem("svg", a, "link-button");
-            setVectorSource(dlbtn, key[0]);
-            numberOfLinks++;
-          }
-        });
+        newElem("div", elem, { class: "divider-1" });
         //Release Date
         if (Track.date) {
           if (Object.prototype.toString.call(Track.date) === "[object Date]") {
@@ -97,7 +78,7 @@ function drawTracks(Tracks, defTracks) {
                 year: "numeric"
               }) + " | " + date.toLocaleTimeString([]))
             });
-            var date2 = newElem("div", dates, { class: "dateText dateRelative", innerHTML: timeAgo(date, 1), title: timeAgo(date) });
+            var date2 = newElem("div", dates, { class: "dateText dateRelative", innerHTML: timeAgo(date, 1), title: timeAgo(date) })
           }
         }
       }
@@ -110,34 +91,34 @@ function drawTracks(Tracks, defTracks) {
           } else {
             setTimeout(function() {
               if(Track.shown) { Track.elem.classList.remove("invisible") }
-            }, showAfter);
+            }, showAfter)
           }
-          showAfter += 60;
+          showAfter += 60
         } else {
           Track.elem.classList.add("invisible");
           Track.elem.classList.add("hide");
-          Track.shown = false;
+          Track.shown = false
         }
       }
-    }());
+    }())
   }
-  return true;
+  return true
 }
 function drawTrack(Track) {
   if (Track) {} else {
-    return false;
+    return false
   }
   var img = $("#TrackImage")[0];
   if (Track.img) {
-    img.src = processLink(Track.img, true);
+    img.src = processLink(Track.img, true)
   } else {
-    img.src = "";
+    img.src = ""
   }
   var title = $("#TrackTitle")[0];
   title.innerHTML = Track.name || "No name";
   title.setAttribute("title", Track.title + " by " + Track.author);
   addEvent(title, "dblclick", function() {
-    selectText(title);
+    selectText(title)
   });
 
   var links = $("#TrackLinks")[0];
@@ -147,16 +128,16 @@ function drawTrack(Track) {
   if(Track.download && Track.download.length != 0) {
     for (var key in Track.download) {
       if (!Track.download.hasOwnProperty(key)) { continue; }
-      var a = newElem("a", dlLinks, { class: "btn shadow dynamic wave", href: processLink(Track.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Track.name + ")") });
+      var a = newElem("a", dlLinks, { class: "btn shadow dynamic wave", href: processLink(Track.download[key]), target: "_blank", innerHTML: "." + key, title: ("Free Download ." + key + " (" + Track.name + ")") })
     }
   } else {
-    dlLinks.innerHTML = "Nothing here...";
+    dlLinks.innerHTML = "Nothing here..."
   }
   linksToDisplay.forEach(function(key) {
     if(Track.links.hasOwnProperty(key[0]) && Track.links[key[0]]) {
       var a = newElem("a", links, { class: "link", href: processLink(Track.links[key[0]]), target: "_blank", title: ("\"" + Track.name + "\" on " + key[1]) });
       var dlbtn = newElem("svg", a, "link-button");
-      setVectorSource(dlbtn, key[0]);
+      setVectorSource(dlbtn, key[0])
     }
   });
 

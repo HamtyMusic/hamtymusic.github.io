@@ -430,9 +430,13 @@ html .circle {
   margin: 2em 15%;
   margin: 2em var(--size-divider-margin-side);
 }
+.divider-1 {
+  width: 70%;
+  margin: 0.75em var(--size-divider-margin-side);
+  border-top: var(--size-divider-thickness) solid var(--col-divider);
+}
 .divider-2 {
   width: 100%;
-  border-top: 1px solid #eee;
   border-top: var(--size-divider-thickness) solid var(--col-divider);
 }
 .spinner {
@@ -682,9 +686,7 @@ html .circle {
   0% { transform: scale(0); }
 }
 @keyframes scale-up-slight {
-  0% {
-    transform:scale(0.5);
-  }
+  0% { transform:scale(0.5); }
 }
 @keyframes roundify {
   100% { border-radius: 50%; }
