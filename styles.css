@@ -162,7 +162,8 @@ html, body {
 body {
   background: #f9f9f9;
   background: var(--col-bg-main);
-  font-family: sans-serif;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-primary);
   padding-top: 2.8em;
   padding-bottom: 1.5em;
 }
@@ -357,6 +358,10 @@ form {
   padding:1em;
   border-radius:2px;
   border-radius:var(--size-border-radius);
+}
+body.flat .pb {
+  background: none;
+  border: none;
 }
 html .circle {
   border-radius: 100%;
