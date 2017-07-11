@@ -112,22 +112,25 @@ body#loading #LoadingWrap {
   width:100%;
 }
 .track-title {
-  font-size: 1.5em;
-  font-family:Yesteryear;
+  font-size: 1.2em;
+  font-family: Yesteryear;
   line-height: 1.2;
-  margin-top: 0.6em;
-  margin-bottom: 0.3em;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 .track-author {
-  font-size: 1.1em;
-  font-family:Merienda;
-  margin-top:-0.4em;
-  color:#555;
+  font-size: 0.9em;
+  font-family: Merienda;
+  margin-top: -0.4em;
+  color: #555;
 }
 .track-author:before {
   content:"by ";
   font-size:0.8em;
   color:#666;
+}
+.DateContainer {
+  font-size: 0.9em;
 }
 .dateAbsolute {
   font-weight:600;
