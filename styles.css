@@ -587,6 +587,8 @@ html .circle {
   font-size: 0.75rem;
   line-height: 1.8rem;
   text-transform: uppercase;
+}
+.header-link, .header-link:hover, .header-link:active {
   color: var(--col-btn-gray);
 }
 .header-link::before {
@@ -594,7 +596,7 @@ html .circle {
   top: 0;
   left: 0;
   overflow: hidden;
-  padding: inherit;
+  margin: 0 0.8rem;
   line-height: inherit;
   text-transform: inherit;
   max-width: 0;
