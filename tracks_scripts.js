@@ -248,17 +248,22 @@ function drawPage(hash) {
     hash = location.hash
   }
   hash = hash.replace('#','');
-  console.log("Drawing the page using hash: " + hash);
+  // console.log("Drawing the page using hash: " + hash);
+  if(document.body.id == "list") {
+    window.listScroll = document.body.scrollTop
+  }
   if(hash === "") {
     removeHash();
     if(document.body.id == "list") return false;
     document.body.id = "list";
     document.title = "Hamty\'s Music";
     drawTracks(Tracks);
+    document.body.scrollTop = listScroll
   } else if(Tracks[hash]) {
     document.body.id = "info";
-    document.title = Tracks[hash].name + " \| Hamty\'s Website"
+    document.title = Tracks[hash].name + " \| Hamty\'s Website";
     drawTrack(Tracks[hash]);
+    document.body.scrollTop = 200
   } else {
     removeHash()
   }

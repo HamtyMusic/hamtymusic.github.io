@@ -131,22 +131,18 @@ function newElem(type, parent, arg3, id) {
   (parent || document.body).appendChild(elem);
   function setAttributes(obj) {
     for(var i in obj) {
-      if (obj.hasOwnProperty(i)) {
-        if(i.toLowerCase) {
-          var p = i.toLowerCase();
-          if(p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" ) {
-            elem[i] = obj[i]
-          } else if(p == "class") {
-            elem.setClass(obj[i])
-          } else if(p == "text") {
-            elem.insertAdjacentHTML("beforeend", obj[i])
-          } else {
-            if(isSvg) {
-              elem.setAttributeNS(svgNS, i, obj[i])
-            } else {
-              elem.setAttribute(i, obj[i])
-            }
-          }
+      if (obj.hasOwnProperty(i) && i.toLowerCase) {
+        var p = i.toLowerCase();
+        if(p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" ) {
+          elem[i] = obj[i]
+        } else if(p == "class") {
+          elem.setClass(obj[i])
+        } else if(p == "text") {
+          elem.insertAdjacentHTML("beforeend", obj[i])
+        } else if(isSvg) {
+          elem.setAttributeNS(svgNS, i, obj[i])
+        } else {
+          elem.setAttribute(i, obj[i])
         }
       }
     }
