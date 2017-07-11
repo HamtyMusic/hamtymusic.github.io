@@ -258,15 +258,17 @@ function drawPage(hash) {
     document.body.id = "list";
     document.title = "Hamty\'s Music";
     drawTracks(Tracks);
-    document.body.scrollTop = listScroll
+    document.body.scrollTop = window.listScroll || window.listScrollDefault || 0
   } else if(Tracks[hash]) {
     document.body.id = "info";
     document.title = Tracks[hash].name + " \| Hamty\'s Website";
     drawTrack(Tracks[hash]);
-    document.body.scrollTop = 200
+    document.body.scrollTop = window.infoScrollDefault || 0
   } else {
     removeHash()
   }
+  window.listScrollDefault = 200
+  window.infoScrollDefault = 200
 }
 function updateSearchValue() {
   var elem = document.getElementById("SearchInput"),
