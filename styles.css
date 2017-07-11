@@ -574,6 +574,38 @@ html .circle {
   font-weight: var(--font-weight-primary);
   background: var(--col-bg-header);
 }
+.header-link-area {
+  padding: 0 1rem;
+}
+.header-link {
+  display: inline-block;
+  position: relative;
+  padding: 0 0.8rem;
+  font-size: 0.75rem;
+  line-height: 1.8rem;
+  text-transform: uppercase;
+  color: var(--col-btn-gray);
+}
+.header-link::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  padding: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+  max-width: 0;
+  border-bottom: 2px solid var(--col-btn-gray-hover);
+  color: var(--col-btn-gray-hover);
+  content: attr(data-hover);
+  transition: max-width 0.5s;
+}
+.header-link:hover::before, .header-link:focus::before {
+  max-width: 100%;
+}
+.header-link:focus::before {
+  color: var(--col-btn-gray-active)
+}
 .header-menu-btn, .menu-close-btn {
   fill: var(--col-btn-gray);
   height: 2em;
@@ -581,15 +613,15 @@ html .circle {
   border-radius: 50%;
   cursor: pointer;
 }
+.header-menu-btn:hover, .menu-close-btn:hover {
+  fill: var(--col-btn-gray-hover);
+}
+.header-menu-btn:active, .menu-close-btn:active {
+  fill: var(--col-btn-gray-active);
+}
 .menu-close-btn {
   padding: 0.5em;
   margin: 0.4em 0;
-}
-.header-menu-btn:hover {
-  fill: var(--col-btn-gray-hover);
-}
-.header-menu-btn:active {
-  fill: var(--col-btn-gray-active);
 }
 .menu-body {
   position: fixed;
