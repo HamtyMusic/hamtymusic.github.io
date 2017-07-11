@@ -310,5 +310,5 @@ addEvent(document, "DOMContentLoaded", function() {
   addEvent($("#TrackImage")[0], "click", function() {
     newElem("img", newPopup(), { class: "track-image shadow", src: $("#TrackImage")[0].src })
   });
-  drawPage(location.search.replace("?q=", ""))
+  drawPage(Search(location.search.replace("?q=", "")))
 }, { once: true })
