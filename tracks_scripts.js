@@ -290,7 +290,7 @@ function submitSearch() {
     if(document.body.id != "list") {
       location.hash = "";
       setTimeout(submitSearch, 100);
-      return false;
+      return false
     } else drawTracks(Search(updateSearchValue()))
   } catch(error) {}
   return false
@@ -310,5 +310,9 @@ addEvent(document, "DOMContentLoaded", function() {
   addEvent($("#TrackImage")[0], "click", function() {
     newElem("img", newPopup(), { class: "track-image shadow", src: $("#TrackImage")[0].src })
   });
-  drawPage(Search(location.search.replace("?q=", "")))
+  drawPage();
+  var q = location.search.replace("?q=", "");
+  if(q) {
+    drawTracks(Search(location.search.replace("?q=", "")))
+  }
 }, { once: true })
