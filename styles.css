@@ -573,6 +573,9 @@ html .circle {
   font-family: var(--font-primary);
   font-weight: var(--font-weight-primary);
   background: var(--col-bg-header);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 .header-link-area {
   padding: 0 1rem;
