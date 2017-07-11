@@ -114,9 +114,9 @@
   --col-bg-2: #444;
   --col-search: var(--col-bg-2);
   --col-search-focus: var(--col-bg-block);
-  --col-btn-gray: var(--col-gray-700);
-  --col-btn-gray-hover: var(--col-gray-500);
-  --col-btn-gray-active: var(--col-gray-900);
+  --col-btn-gray: var(--col-gray-200);
+  --col-btn-gray-hover: var(--col-gray-100);
+  --col-btn-gray-active: var(--col-gray-400);
   --col-btn-primary: var(--col-primary-700);
   --col-btn-primary-hover: var(--col-primary-500);
   --col-btn-primary-active: var(--col-primary-900);
