@@ -587,29 +587,13 @@ html .circle {
   font-size: 0.75rem;
   line-height: 1.8rem;
   text-transform: uppercase;
-}
-.header-link, .header-link:hover, .header-link:active {
   color: var(--col-btn-gray);
 }
-.header-link::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  margin: 0 0.8rem;
-  line-height: inherit;
-  text-transform: inherit;
-  max-width: 0;
-  border-bottom: 2px solid var(--col-btn-gray-hover);
+.header-link:hover {
   color: var(--col-btn-gray-hover);
-  content: attr(data-hover);
-  transition: max-width 0.5s;
 }
-.header-link:hover::before, .header-link:focus::before {
-  max-width: 100%;
-}
-.header-link:focus::before {
-  color: var(--col-btn-gray-active)
+.header-link:active {
+  color: var(--col-btn-gray-active);
 }
 .header-menu-btn, .menu-close-btn {
   fill: var(--col-btn-gray);
