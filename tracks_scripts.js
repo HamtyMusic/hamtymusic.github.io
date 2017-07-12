@@ -26,7 +26,7 @@ var search = {
   },
   setValue: function(value) {
     this.getElem().value = value;
-    return this.updateValue()
+    this.update()
   },
   updateValue: function() {
     var elem = this.getElem(),
@@ -41,7 +41,7 @@ var search = {
       } else {
         this.updateValue()
       }
-    })
+    }.bind(this))
   },
   submit: function() {
     try {
@@ -58,12 +58,7 @@ var search = {
     return false
   },
   clear: function() {
-    var elem = this.getElem();
-    if (elem) {
-      elem.value = "";
-      elem.setAttribute('value', "");
-      drawTracks(Tracks);
-    }
+    this.setValue("")
   }
 }
 
