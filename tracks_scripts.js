@@ -6,10 +6,16 @@ function Search(str) {
     return Tracks
   }
   var searchTags = str.split(" "),
-    results = {};
+    results = {},
+    trackName;
   for (i in Tracks) {
-    if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase().indexOf(searchTags[i].toLowerCase()) !== -1) {
-      results[i] = Tracks[i]
+    if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase) {
+      trackName = Tracks[i].name.toLowerCase();
+      searchTags.forEach(function(tag) {
+        if(searchTags.hasOwnProperty(tag) && trackName.indexOf(searchTags[tag].toLowerCase()) !== -1) {
+          results[i] = Tracks[i]
+        }
+      })
     }
   }
   return results
