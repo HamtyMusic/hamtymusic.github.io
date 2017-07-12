@@ -124,6 +124,7 @@ function drawTrack(Track) {
   var img = $("#TrackImage")[0];
   img.src = (Track.img) ? processLink(Track.img, true) : "";
   var title = $("#TrackTitle")[0];
+  title.innerHTML = "";
   editElem(title, { text: Track.name || "No name", title: Track.title + " by " + Track.author });
   addEvent(title, "dblclick", function() {
     selectText(title)
