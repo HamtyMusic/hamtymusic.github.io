@@ -8,7 +8,7 @@ function Search(str) {
   var searchTags = str.split(" "),
     results = {};
   for (i in Tracks) {
-    if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[y].name.toLowerCase().indexOf(searchTags[i].toLowerCase()) !== -1) {
+    if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase().indexOf(searchTags[i].toLowerCase()) !== -1) {
       results[i] = Tracks[i]
     }
   }
