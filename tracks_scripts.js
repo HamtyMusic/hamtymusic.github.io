@@ -12,7 +12,7 @@ function Search(str) {
     if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase) {
       trackName = Tracks[i].name.toLowerCase();
       searchTags.forEach(function(tag) {
-        if (trackName.indexOf(searchTags[tag].toLowerCase()) !== -1) {
+        if (trackName.indexOf(tag.toLowerCase()) !== -1) {
           results[i] = Tracks[i]
         }
       })
