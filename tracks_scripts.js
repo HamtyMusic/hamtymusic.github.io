@@ -2,32 +2,15 @@ var detailProperties = [ "genre", "duration", "tempo", "type" ],
   linksToDisplay = [[ "soundcloud", "Soundcloud" ], [ "youtube", "Youtube" ], [ "spotify", "Spotify" ], [ "itunes", "iTunes" ], [ "googleMusic", "Google Play Music" ], [ "amazon", "Amazon" ], [ "routenote", "Routenote Direct" ], [ "bandcamp", "Bandcamp" ]];
 
 function Search(str) {
-  str = str || "";
-  if (str.length == 0) {
+  if (!str || str.length === 0) {
     return Tracks
   }
-  var srchTgs = str.split(" ");
-  for (var i = 0; i < srchTgs.length; i++) {
-    srchTgs[i] = srchTgs[i].toLowerCase()
-  }
-  var mObj = {};
+  var searchTags = str.split(" "),
+    results = {};
   for (i in Tracks) {
-    if (!Tracks.hasOwnProperty(i)) { continue }
-    mObj[i] = true
-  }
-  for (var i = 0; i < srchTgs.length; i++) {
-    for (var y in mObj) {
-      if (Tracks[y].name && mObj.hasOwnProperty(y)) {
-        if (((Tracks[y].name).toLowerCase()).search(srchTgs[i]) == -1) {
-          delete mObj[y]
-        }
-      }
+    if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[y].name.toLowerCase().indexOf(searchTags[i].toLowerCase()) !== -1) {
+      results[i] = Tracks[i]
     }
-  }
-  var results = {};
-  for (i in mObj) {
-    if (!mObj.hasOwnProperty(i)) { continue }
-    results[i] = (Tracks[i])
   }
   return results
 }
@@ -313,6 +296,6 @@ addEvent(document, "DOMContentLoaded", function() {
   drawPage();
   var q = location.search.replace("?q=", "");
   if(q) {
-    drawTracks(Search(location.search.replace("?q=", "")))
+    drawTracks(Search(q))
   }
 }, { once: true })
