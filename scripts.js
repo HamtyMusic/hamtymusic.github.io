@@ -26,7 +26,7 @@ function getQueries(a) {
     var p = i.split('=', 2);
     if (p.length == 1) b[p[0]] = "";
     else b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "))
-  }
+  });
   return b
 }
 var theme = {
