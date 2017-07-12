@@ -2,12 +2,12 @@ const svgNS = "http://www.w3.org/2000/svg";
 const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var scripts = {};
 HTMLElement.prototype.setClass = function(classes) {
-  if(typeof classes == "string") {
+  if (typeof classes == "string") {
     classes = classes.split(" ")
   }
-  if(classes.length == 1) {
+  if (classes.length == 1) {
     this.classList.add(classes)
-  } else if(classes.length > 1) {
+  } else if (classes.length > 1) {
     for (var i = 0; i < classes.length; i++) {
       this.classList.add(classes[i])
     }
@@ -29,7 +29,7 @@ var theme = {
     }
   },
   set: function(theme) {
-    if(theme === 1 || theme === true || (theme.toLowerCase && ( theme.toLowerCase() === "true" || theme.toLowerCase() === "dark"))) {
+    if (theme === 1 || theme === true || (theme.toLowerCase && ( theme.toLowerCase() === "true" || theme.toLowerCase() === "dark"))) {
       localStorage.darkTheme = true
     } else {
       localStorage.darkTheme = false
@@ -46,7 +46,7 @@ var theme = {
   }
 }
 addEvent(window, "storage", function(e) {
-  if(e.key == "darkTheme") theme.load()
+  if (e.key == "darkTheme") theme.load()
 })
 theme.load();
 var images = {
@@ -123,7 +123,7 @@ function newElem(type, parent, attributes, id) {
   type = type.toLowerCase();
   var elem,
     isSvg = (document.createElementNS && document.setAttributeNS) && (type == "svg" || type == "path" || type == "circle");
-  if(isSvg) {
+  if (isSvg) {
     elem = document.createElementNS(svgNS, type);
   } else {
     elem = document.createElement(type);
@@ -140,7 +140,7 @@ function newElem(type, parent, attributes, id) {
   return elem
 }
 function editElem(elem, attributes) {
-  if(!isObject(attributes)) {
+  if (!isObject(attributes)) {
     return elem
   }
   var type = elem.tagName.toLowerCase(),
@@ -148,7 +148,7 @@ function editElem(elem, attributes) {
   for (var i in attributes) {
     if (attributes.hasOwnProperty(i) && i.toLowerCase) {
       var p = i.toLowerCase();
-      if (p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" ) {
+      if (p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" || p == "src" ) {
         elem[i] = attributes[i]
       } else if (p == "class") {
         elem.setClass(attributes[i])
@@ -173,7 +173,7 @@ function addEvent(elem, evnt, func, options) {
   }
 }
 function addScript(src) {
-  if(scripts.src) {
+  if (scripts.src) {
     return false
   } else {
     return scripts.src = newElem("script", document.head, { src: src })
@@ -185,7 +185,7 @@ function isObject(val) {
 }
 function newPopup() {
   var otherPopup = $(".popup-body")[0];
-  if(otherPopup) {
+  if (otherPopup) {
     otherPopup.outerHTML = "";
     return newPopup();
   }
@@ -206,7 +206,7 @@ function newPopup() {
 }
 function openMenu() {
   var otherMenu = $(".menu-body")[0];
-  if(otherMenu) {
+  if (otherMenu) {
     otherMenu.classList.remove("off");
     otherMenu.classList.remove("hide");
     return otherMenu;
@@ -241,18 +241,18 @@ function closeMenu() {
 }
 addEvent(document, "DOMContentLoaded", function() {
   var elem = $(".header-menu-btn")[0];
-  if(elem) {
+  if (elem) {
     addEvent(elem, "click", openMenu)
   }
 });
 function setVectorSource(elem, id) {
-  if(elem && id && images[id] && images[id].inline) {
+  if (elem && id && images[id] && images[id].inline) {
     /*
     if (images[id].svg) { elem.src = images[id].svg; }
     if (images[id].png) { elem.onerror = "this.onerror = null; this.src = \'" + images[id].png + "\'"; }
     */
     images[id].inline;
-    if(images[id].inline.wide) {
+    if (images[id].inline.wide) {
       elem.classList.add("wide")
     }
     elem.setAttributeNS(svgNS, "viewbox", images[id].inline.svg.viewbox);
@@ -265,14 +265,14 @@ function setVectorSource(elem, id) {
 }
 function removeHash() {
   var scrollV, scrollH, loc = window.location;
-  if(!(loc.hash === "" || loc.hash === "_=_")) {
+  if (!(loc.hash === "" || loc.hash === "_=_")) {
     scrollV = document.body.scrollTop; // Prevent scrolling by storing the page's current scroll offset
     scrollH = document.body.scrollLeft;
     loc.hash = "";
     document.body.scrollTop = scrollV; // Restore the scroll offset, should be flicker free
     document.body.scrollLeft = scrollH
   }
-  if("replaceState" in history) {
+  if ("replaceState" in history) {
     history.replaceState("", document.title, loc.pathname + loc.search)
   }
 }
@@ -292,7 +292,7 @@ function processLink(link, https) {
 function timeAgo(then, length) {
   length = length || 3;
   var now = new Date();
-  if((now - then) < 0) return "Coming soon";
+  if ((now - then) < 0) return "Coming soon";
   var deltaYr = now.getFullYear() - then.getFullYear();
   if (then.getMonth() > now.getMonth() || (then.getMonth() === now.getMonth() && then.getDate() > now.getDate())) deltaYr--;
   var deltaMn = now.getMonth() - then.getMonth();
@@ -330,6 +330,18 @@ function timeAgo(then, length) {
   }
   return (sb.join(', ') + " ago")
 }
+function digitClock(sec) {
+  var arr = [],
+    hours = Math.floor(sec / 3600),
+    minutes = Math.floor((sec % 3600) / 60),
+    seconds = sec % 60;
+  if (hours > 0) {
+    arr.push(hours)
+  }
+  arr.push((minutes < 10) ? "0" + minutes : minutes);
+  arr.push((seconds < 10) ? "0" + seconds : seconds);
+  return arr.join(":")
+}
 function getCurrentMonth() {
   return (new Date()).getMonth()
 }
@@ -362,7 +374,7 @@ addEvent(document, "DOMContentLoaded", function() {
 }, { once: true });
 (function() {
   var m = month[getCurrentMonth()];
-  if((location.pathname != "/banner") && (m == "December" || m == "January" || m == "February")) {
+  if ((location.pathname != "/banner") && (m == "December" || m == "January" || m == "February")) {
     addEvent(document, "DOMContentLoaded", function() {
       addScript("/LetItSnow.js")
     }, { once: true });
