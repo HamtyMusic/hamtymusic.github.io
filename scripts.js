@@ -19,6 +19,16 @@ String.prototype.isEmpty = function() {
 String.prototype.capFirstLetter = function() {
   return this.charAt(0).toUpperCase() + this.slice(1)
 }
+function getQueries(a) {
+  a = a || window.location.search.substr(1).split('&');
+  var b = {};
+  if (a != "") a.forEach(function(i) {
+    var p = i.split('=', 2);
+    if (p.length == 1) b[p[0]] = "";
+    else b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "))
+  }
+  return b
+}
 var theme = {
   isSupported: function() {
     return (((typeof localStorage) !== "undefined") && (document.documentElement.classList && document.documentElement.classList.toggle))
