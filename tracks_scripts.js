@@ -41,20 +41,20 @@ function drawTracks(Tracks, defTracks) {
         Track.shown = false;
         if (Track.img) {
           var imgPar = newElem("a", elem, { class: "track-image-wrap lighten", href: "#" + i });
-          var img = newElem("img", imgPar, { class: "track-image shadow dynamic", src: Track.img.replace(/^http:\/\//i, 'https://') })
+          newElem("img", imgPar, { class: "track-image shadow dynamic", src: Track.img.replace(/^http:\/\//i, 'https://') })
         }
         var title = newElem("div", elem, { class: "track-title", text: Track.title, title: Track.name });
         addEvent(title, "dblclick", function() {
           selectText(title)
         });
-        var author = newElem("div", elem, { class: "track-author", text: Track.author, title: Track.name });
+        newElem("div", elem, { class: "track-author", text: Track.author, title: Track.name });
         newElem("div", elem, { class: "divider-1" });
         //Release Date
         if (Track.date && Object.prototype.toString.call(Track.date) === "[object Date]") {
           var date = Track.date;
           var dates = newElem("div", elem, "DateContainer");
-          var date1 = newElem("div", dates, { class: "dateText dateAbsolute", text: date.toLocaleDateString([], { day: "numeric", month: "short", year: "numeric" }), title: (date.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" }) + " | " + date.toLocaleTimeString([])) });
-          var date2 = newElem("div", dates, { class: "dateText dateRelative", text: timeAgo(date, 1), title: timeAgo(date) })
+          newElem("div", dates, { class: "dateText dateAbsolute", text: date.toLocaleDateString([], { day: "numeric", month: "short", year: "numeric" }), title: (date.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" }) + " | " + date.toLocaleTimeString([])) });
+          newElem("div", dates, { class: "dateText dateRelative", text: timeAgo(date, 1), title: timeAgo(date) })
         }
       }
       if(Track.shown != should && Track.elem.classList && Track.elem.classList.toggle) {

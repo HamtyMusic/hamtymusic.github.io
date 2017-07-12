@@ -119,43 +119,49 @@ function $(q, caller) {
   caller = caller || document;
   return caller.querySelectorAll(q);
 }
-function newElem(type, parent, arg3, id) {
+function newElem(type, parent, attributes, id) {
   type = type.toLowerCase();
   var elem,
-      isSvg = (document.createElementNS && document.setAttributeNS) && (type == "svg" || type == "path" || type == "circle");
+    isSvg = (document.createElementNS && document.setAttributeNS) && (type == "svg" || type == "path" || type == "circle");
   if(isSvg) {
     elem = document.createElementNS(svgNS, type);
   } else {
     elem = document.createElement(type);
   }
   (parent || document.body).appendChild(elem);
-  function setAttributes(obj) {
-    for(var i in obj) {
-      if (obj.hasOwnProperty(i) && i.toLowerCase) {
-        var p = i.toLowerCase();
-        if(p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" ) {
-          elem[i] = obj[i]
-        } else if(p == "class") {
-          elem.setClass(obj[i])
-        } else if(p == "text") {
-          elem.insertAdjacentHTML("beforeend", obj[i])
-        } else if(isSvg) {
-          elem.setAttributeNS(svgNS, i, obj[i])
-        } else {
-          elem.setAttribute(i, obj[i])
-        }
+  if (isObject(attributes)) {
+    editElem(elem, attributes)
+  } else if (attributes) {
+    elem.setClass(attributes)
+  }
+  if (id) {
+    elem.id = id
+  }
+  return elem
+}
+function editElem(elem, attributes) {
+  if(!isObject(attributes)) {
+    return elem
+  }
+  var type = elem.tagName.toLowerCase(),
+    isSvg = (document.createElementNS && document.setAttributeNS) && (type == "svg" || type == "path" || type == "circle");
+  for (var i in attributes) {
+    if (attributes.hasOwnProperty(i) && i.toLowerCase) {
+      var p = i.toLowerCase();
+      if (p == "innerhtml" || p == "outerhtml" || p == "id" || p == "checked" ) {
+        elem[i] = attributes[i]
+      } else if (p == "class") {
+        elem.setClass(attributes[i])
+      } else if (p == "text") {
+        elem.insertAdjacentHTML("beforeend", attributes[i])
+      } else if (isSvg) {
+        elem.setAttributeNS(svgNS, i, attributes[i])
+      } else {
+        elem.setAttribute(i, attributes[i])
       }
     }
   }
-  if(isObject(arg3)) {
-    setAttributes(arg3);
-  } else if(arg3) {
-    elem.setClass(arg3);
-  }
-  if (id) {
-    elem.id = id;
-  }
-  return elem;
+  return elem
 }
 function addEvent(elem, evnt, func, options) {
   if (elem.addEventListener) { // W3C DOM
