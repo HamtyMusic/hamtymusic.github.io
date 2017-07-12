@@ -12,7 +12,7 @@ function Search(str) {
     if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase) {
       trackName = Tracks[i].name.toLowerCase();
       searchTags.forEach(function(tag) {
-        if(searchTags.hasOwnProperty(tag) && trackName.indexOf(searchTags[tag].toLowerCase()) !== -1) {
+        if(trackName.indexOf(searchTags[tag].toLowerCase()) !== -1) {
           results[i] = Tracks[i]
         }
       })
@@ -43,32 +43,18 @@ function drawTracks(Tracks, defTracks) {
           var imgPar = newElem("a", elem, { class: "track-image-wrap lighten", href: "#" + i });
           var img = newElem("img", imgPar, { class: "track-image shadow dynamic", src: Track.img.replace(/^http:\/\//i, 'https://') })
         }
-        var title = newElem("div", elem, { class: "track-title", innerHTML: Track.title, title: Track.name });
+        var title = newElem("div", elem, { class: "track-title", text: Track.title, title: Track.name });
         addEvent(title, "dblclick", function() {
           selectText(title)
         });
-        var author = newElem("div", elem, { class: "track-author", innerHTML: Track.author, title: Track.name });
+        var author = newElem("div", elem, { class: "track-author", text: Track.author, title: Track.name });
         newElem("div", elem, { class: "divider-1" });
         //Release Date
-        if (Track.date) {
-          if (Object.prototype.toString.call(Track.date) === "[object Date]") {
-            var date = Track.date;
-            var dates = newElem("div", elem, "DateContainer");
-            var date1 = newElem("div", dates, {
-              class: "dateText dateAbsolute",
-              innerHTML: date.toLocaleDateString([], {
-                day: "numeric",
-                month: "short",
-                year: "numeric"
-              }),
-              title: (date.toLocaleDateString([], {
-                day: "numeric",
-                month: "long",
-                year: "numeric"
-              }) + " | " + date.toLocaleTimeString([]))
-            });
-            var date2 = newElem("div", dates, { class: "dateText dateRelative", innerHTML: timeAgo(date, 1), title: timeAgo(date) })
-          }
+        if (Track.date && Object.prototype.toString.call(Track.date) === "[object Date]") {
+          var date = Track.date;
+          var dates = newElem("div", elem, "DateContainer");
+          var date1 = newElem("div", dates, { class: "dateText dateAbsolute", text: date.toLocaleDateString([], { day: "numeric", month: "short", year: "numeric" }), title: (date.toLocaleDateString([], { day: "numeric", month: "long", year: "numeric" }) + " | " + date.toLocaleTimeString([])) });
+          var date2 = newElem("div", dates, { class: "dateText dateRelative", text: timeAgo(date, 1), title: timeAgo(date) })
         }
       }
       if(Track.shown != should && Track.elem.classList && Track.elem.classList.toggle) {
