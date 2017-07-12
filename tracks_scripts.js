@@ -1,24 +1,70 @@
 var detailProperties = [ "genre", "duration", "tempo", "type" ],
   linksToDisplay = [[ "soundcloud", "Soundcloud" ], [ "youtube", "Youtube" ], [ "spotify", "Spotify" ], [ "itunes", "iTunes" ], [ "googleMusic", "Google Play Music" ], [ "amazon", "Amazon" ], [ "routenote", "Routenote Direct" ], [ "bandcamp", "Bandcamp" ]];
 
-function Search(str) {
-  if (!str || str.length === 0) {
-    return Tracks
-  }
-  var searchTags = str.split(" "),
-    results = {},
-    trackName;
-  for (i in Tracks) {
-    if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase) {
-      trackName = Tracks[i].name.toLowerCase();
-      searchTags.forEach(function(tag) {
-        if (trackName.indexOf(tag.toLowerCase()) !== -1) {
-          results[i] = Tracks[i]
-        }
-      })
+var search = {
+  getElem: function() {
+    return $("#SearchInput")[0]
+  },
+  findTracks: function (str) {
+    if (!str || str.length === 0) {
+      return Tracks
+    }
+    var searchTags = str.split(" "),
+      results = {},
+      trackName;
+    for (i in Tracks) {
+      if (Tracks.hasOwnProperty(i) && Tracks[i].name && Tracks[i].name.toLowerCase) {
+        trackName = Tracks[i].name.toLowerCase();
+        searchTags.forEach(function(tag) {
+          if (trackName.indexOf(tag.toLowerCase()) !== -1) {
+            results[i] = Tracks[i]
+          }
+        })
+      }
+    }
+    return results
+  },
+  setValue: function(value) {
+    this.getElem().value = value;
+    return this.updateValue()
+  },
+  updateValue: function() {
+    var elem = this.getElem(),
+      value = elem.value;
+    elem.setAttribute('value', value);
+    return value
+  },
+  update: function() {
+    requestAnimationFrame(function() {
+      if (document.body.id == "list") {
+        this.submit()
+      } else {
+        this.updateValue()
+      }
+    })
+  },
+  submit: function() {
+    try {
+      if (document.body.id != "list") {
+        location.hash = "";
+        setTimeout(this.submit, 100);
+        return false
+      } else {
+        drawTracks(this.findTracks(this.updateValue()))
+      }
+    } catch (error) {
+      console.error(error)
+    }
+    return false
+  },
+  clear: function() {
+    var elem = this.getElem();
+    if (elem) {
+      elem.value = "";
+      elem.setAttribute('value', "");
+      drawTracks(Tracks);
     }
   }
-  return results
 }
 
 function drawTracks(Tracks, defTracks) {
@@ -218,41 +264,7 @@ function drawPage(hash) {
   window.listScrollDefault = 200
   window.infoScrollDefault = 200
 }
-function updateSearchValue() {
-  var elem = document.getElementById("SearchInput"),
-      value = elem.value;
-  elem.setAttribute('value', value);
-  return value
-}
-function updateSearch() {
-  requestAnimationFrame(function() {
-    if (document.body.id == "list") {
-      submitSearch();
-    } else {
-      updateSearchValue();
-    }
-  });
-}
-function submitSearch() {
-  try {
-    if (document.body.id != "list") {
-      location.hash = "";
-      setTimeout(submitSearch, 100);
-      return false
-    } else {
-      drawTracks(Search(updateSearchValue()))
-    }
-  } catch(error) {}
-  return false
-}
-function clearSearch() {
-  var elem = document.getElementById("SearchInput");
-  if (elem) {
-    elem.value = "";
-    elem.setAttribute('value', "");
-    drawTracks(Tracks);
-  }
-}
+
 addEvent(document, "DOMContentLoaded", function() {
   addEvent(window, "hashchange", function() {
     drawPage()
@@ -261,8 +273,8 @@ addEvent(document, "DOMContentLoaded", function() {
     newElem("img", newPopup(), { class: "track-image shadow", src: $("#TrackImage")[0].src })
   });
   drawPage();
-  var q = location.search.replace("?q=", "");
+  var q = getQueries().q;
   if (q) {
-    drawTracks(Search(q))
+    search.setValue(q)
   }
 }, { once: true })

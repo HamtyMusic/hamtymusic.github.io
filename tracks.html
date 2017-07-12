@@ -56,16 +56,16 @@
         </div>
       </div>
       <div class="page">
-        <form id="SearchForm" class="wrap1" autocomplete="off" onsubmit="return submitSearch()">
-          <input id="SearchInput" class="shadow-2 dynamic" placeholder="Search..." value="" autocomplete="off" onchange="updateSearch()" onkeydown="updateSearch()">
+        <form id="SearchForm" class="wrap1" autocomplete="off" onsubmit="return search.submit()">
+          <input id="SearchInput" class="shadow-2 dynamic" placeholder="Search..." value="" autocomplete="off" onchange="search.update()" onkeydown="search.update()">
           <div class="search-back"></div>
           <div class="search-buttons">
-            <div class="search-go" onclick="submitSearch()">
+            <div class="search-go" onclick="search.submit()">
               <div class="circle-button">
                 <div class="button-icon"></div>
               </div>
             </div>
-            <div class="search-clear" onclick="clearSearch()">
+            <div class="search-clear" onclick="search.clear()">
               <div class="circle-button">
                 <div class="close button-icon"></div>
               </div>
