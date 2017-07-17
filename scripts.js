@@ -346,9 +346,7 @@ function digitClock(sec) {
     hours = Math.floor(sec / 3600),
     minutes = Math.floor((sec % 3600) / 60),
     seconds = sec % 60;
-  if (hours > 0) {
-    arr.push(hours)
-  }
+  if (hours > 0) arr.push(hours);
   arr.push((minutes < 10) ? "0" + minutes : minutes);
   arr.push((seconds < 10) ? "0" + seconds : seconds);
   return arr.join(":")
