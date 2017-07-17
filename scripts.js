@@ -289,15 +289,9 @@ function removeHash() {
 }
 function processLink(link, https) {
   if (!link) return undefined;
-  if (link.href) {
-    link = link.href
-  }
-  if (link.constructor === Array) {
-    link = link.join("")
-  }
-  if (https) {
-    link = link.replace(/^http:\/\//i, 'https://')
-  }
+  if (link.href) link = link.href;
+  if (link.constructor === Array) link = link.join("");
+  if (https) link = link.replace(/^http:\/\//i, 'https://');
   return link
 }
 function timeAgo(then, length) {
@@ -318,27 +312,13 @@ function timeAgo(then, length) {
   var tempSc = (tempMt - deltaMt) * 60;
   var deltaSc = Math.floor(tempSc);
   var sb = [];
-  if (deltaYr > 0) {
-    sb.push(deltaYr + ' year' + (deltaYr > 1 ? 's' : ''));
-  }
-  if (deltaMn > 0) {
-    sb.push(deltaMn + ' month' + (deltaMn > 1 ? 's' : ''));
-  }
-  if (deltaDy > 0) {
-    sb.push(deltaDy + ' day' + (deltaDy > 1 ? 's' : ''));
-  }
-  if (deltaHr > 0) {
-    sb.push(deltaHr + ' hour' + (deltaHr > 1 ? 's' : ''));
-  }
-  if (deltaMt > 0) {
-    sb.push(deltaMt + ' minute' + (deltaMt > 1 ? 's' : ''));
-  }
-  if (deltaSc > 0) {
-    sb.push(deltaSc + ' second' + (deltaSc > 1 ? 's' : ''))
-  }
-  if (sb.length > length) {
-    sb.length = length
-  }
+  if (deltaYr > 0) sb.push(deltaYr + ' year' + (deltaYr > 1 ? 's' : ''));
+  if (deltaMn > 0) sb.push(deltaMn + ' month' + (deltaMn > 1 ? 's' : ''));
+  if (deltaDy > 0) sb.push(deltaDy + ' day' + (deltaDy > 1 ? 's' : ''));
+  if (deltaHr > 0) sb.push(deltaHr + ' hour' + (deltaHr > 1 ? 's' : ''));
+  if (deltaMt > 0) sb.push(deltaMt + ' minute' + (deltaMt > 1 ? 's' : ''));
+  if (deltaSc > 0) sb.push(deltaSc + ' second' + (deltaSc > 1 ? 's' : ''))
+  if (sb.length > length) sb.length = length;
   return (sb.join(', ') + " ago")
 }
 function digitClock(sec) {
@@ -347,8 +327,8 @@ function digitClock(sec) {
     minutes = Math.floor((sec % 3600) / 60),
     seconds = sec % 60;
   if (hours > 0) arr.push(hours);
-  arr.push((minutes < 10) ? "0" + minutes : minutes);
-  arr.push((seconds < 10) ? "0" + seconds : seconds);
+  arr.push((minutes < 10 ? "0" : "") + minutes);
+  arr.push((seconds < 10 ? "0" : "") + seconds);
   return arr.join(":")
 }
 function getCurrentMonth() {
