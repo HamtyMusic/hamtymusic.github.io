@@ -1,5 +1,38 @@
 var me = "Hamty";
 var Tracks = {
+  sunriseRun: {
+    name: me + " - Sunrise Run",
+    title: "Sunrise Run",
+    author: me,
+    img: "/img/cover_art/sunriseRun.jpg",
+    links: {
+      soundcloud: {
+        href: "https://soundcloud.com/hamty/sunrise-run",
+        id: "336075012"
+      },
+      youtube: {
+        id: false,
+        aspectRatio: 21 / 9
+      },
+      bandcamp: "https://hamty.bandcamp.com/track/sunrise-run",
+      routenote: false,
+      spotify: false,
+      itunes: false,
+      googleMusic: false,
+      amazon: false
+    },
+    download: {
+      flac: "https://toneden.io/hamty/post/sunrise-run-flac",
+      mp3: "https://toneden.io/hamty/post/sunrise-run-mp3"
+    },
+    details: {
+      type: 0,
+      tempo: 100,
+      genre: "House",
+      duration: 214
+    },
+    date: new Date(2017, 7, 3)
+  },
   luminescence: {
     name: me + " - Luminescence",
     title: "Luminescence",
@@ -22,8 +55,8 @@ var Tracks = {
       amazon: "http://a.co/fG5Obxu"
     },
     download: {
-      flac: "https://www.toneden.io/hamty/post/luminescence-flac",
-      mp3: "https://www.toneden.io/hamty/post/luminescence-mp3"
+      flac: "https://toneden.io/hamty/post/luminescence-flac",
+      mp3: "https://toneden.io/hamty/post/luminescence-mp3"
     },
     details: {
       type: 0,
