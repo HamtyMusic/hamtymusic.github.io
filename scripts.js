@@ -292,7 +292,7 @@ function processLink(link, https) {
   if (link.href) link = link.href;
   if (link.constructor === Array) link = link.join("");
   if (https) link = link.replace(/^http:\/\//i, 'https://');
-  return link
+  return (typeof link === "string") ? link : false
 }
 function timeAgo(then, length) {
   length = length || 3;

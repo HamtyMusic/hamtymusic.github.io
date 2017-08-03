@@ -143,10 +143,13 @@ function drawTrack(Track) {
     editElem(dlLinks, { text: "Nothing here..." })
   }
   linksToDisplay.forEach(function(key) {
-    if (Track.links.hasOwnProperty(key[0]) && Track.links[key[0]]) {
-      var a = newElem("a", links, { class: "link", href: processLink(Track.links[key[0]]), target: "_blank", title: ("\"" + Track.name + "\" on " + key[1]) });
-      var dlbtn = newElem("svg", a, "link-button");
-      setVectorSource(dlbtn, key[0])
+    if (Track.links.hasOwnProperty(key[0])) {
+      var url = processLink(Track.links[key[0]])
+      if (url) {
+        var a = newElem("a", links, { class: "link", href: url, target: "_blank", title: ("\"" + Track.name + "\" on " + key[1]) });
+        var dlbtn = newElem("svg", a, "link-button");
+        setVectorSource(dlbtn, key[0])
+      }
     }
   })
   var date1 = $("#dateAbsolute")[0];
