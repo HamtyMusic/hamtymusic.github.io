@@ -27,7 +27,7 @@
   --col-icon-btn-dark: var(--col-text-btn-dark);
   --col-icon-btn-light: var(--col-text-btn-light);
   --col-divider: hsla(0,0%,0%,0.12);
-  --col-bg-main: #f9f9f9;
+  --col-bg-main: #f6f6f6;
   --col-bg-block: #fff;
   --col-bg-2: #f2f2f2;
   --col-bg-header: var(--col-bg-block);
@@ -84,18 +84,18 @@
   --col-screen-grayout: rgba(230,230,230,0.9);
   --col-overlay: rgba(255,255,255,0.95);
 
-  --shadow-color: rgba(0,0,0,0.1);
-  --shadow-elev-1:  0  1px  3px var(--shadow-color);
-  --shadow-elev-2:  0  3px  6px var(--shadow-color);
-  --shadow-elev-3:  0  5px  9px var(--shadow-color);
-  --shadow-elev-4:  0  7px 11px var(--shadow-color);
-  --shadow-elev-5:  0  9px 14px var(--shadow-color);
-  --shadow-elev-6:  0 11px 17px var(--shadow-color);
-  --shadow-elev-7:  0 13px 21px var(--shadow-color);
-  --shadow-elev-8:  0 15px 24px var(--shadow-color);
-  --shadow-elev-9:  0 17px 27px var(--shadow-color);
-  --shadow-elev-10: 0 19px 30px var(--shadow-color);
-  --shadow-elev-11: 0 21px 33px var(--shadow-color);
+  --shadow-color: rgba(0,0,0,0.05);
+  --shadow-elev-1:  0  2px  1px var(--shadow-color);
+  --shadow-elev-2:  0  3px  3px var(--shadow-color);
+  --shadow-elev-3:  0  4px  5px var(--shadow-color);
+  --shadow-elev-4:  0  5px  7px var(--shadow-color);
+  --shadow-elev-5:  0  6px  9px var(--shadow-color);
+  --shadow-elev-6:  0  7px 11px var(--shadow-color);
+  --shadow-elev-7:  0  8px 13px var(--shadow-color);
+  --shadow-elev-8:  0  9px 15px var(--shadow-color);
+  --shadow-elev-9:  0 10px 17px var(--shadow-color);
+  --shadow-elev-10: 0 11px 19px var(--shadow-color);
+  --shadow-elev-11: 0 12px 21px var(--shadow-color);
   --shadow-banner: 0 -100px 50px -50px rgba(0,0,0,0.3) inset;
 }
 :root.dark-theme {
