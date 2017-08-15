@@ -15,7 +15,7 @@ var Tracks = {
         aspectRatio: 21 / 9
       },
       bandcamp: "https://hamty.bandcamp.com/track/sunrise-run",
-      routenote: false,
+      routenote: "https://routenote.com/r/Hamty/5051813086700",
       spotify: false,
       itunes: false,
       googleMusic: false,
