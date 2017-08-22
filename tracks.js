@@ -16,10 +16,10 @@ var Tracks = {
       },
       bandcamp: "https://hamty.bandcamp.com/track/sunrise-run",
       routenote: "https://routenote.com/r/Hamty/5051813086700",
-      spotify: false,
-      itunes: false,
-      googleMusic: false,
-      amazon: false
+      spotify: "https://open.spotify.com/album/3ezpSZpLMy6OIZzrwWYc0S",
+      itunes: "https://itunes.apple.com/us/album/sunrise-run/id1271787113",
+      googleMusic: "https://play.google.com/store/music/album?id=Bklastv6l3lfjgufc6htw27evh4&tid=song-Tdrph3sarqidzjm4vmoiraxis54",
+      amazon: "https://a.co/2dwtX28"
     },
     download: {
       flac: "https://toneden.io/hamty/post/sunrise-run-flac",
