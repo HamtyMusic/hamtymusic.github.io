@@ -160,12 +160,12 @@ html, body {
   font-size:var(--size-font-primary);
 }
 body {
-  background: #f9f9f9;
+  background: #eee;
   background: var(--col-bg-main);
   font-family: var(--font-primary);
   font-weight: var(--font-weight-primary);
   padding-top: 2.8em;
-  padding-bottom: 1.5em;
+  padding-bottom: 4em;
 }
 input {
   font-family: inherit;
